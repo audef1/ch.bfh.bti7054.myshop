@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: testshop\n"
+"Language: en-en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Register"
+msgstr "Register"
+
+#: 
+msgid "Product"
+msgid_plural "Products"
+msgstr[0] "Product"
+msgstr[1] "Products"
+

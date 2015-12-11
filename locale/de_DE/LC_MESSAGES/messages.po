@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: testshop\n"
+"Language: de-de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Header Register
+msgid "Register"
+msgstr "Registrieren"
+
+#: Header Login
+msgid "Login"
+msgstr "Einloggen"
+
+#: Header Search
+msgid "Search"
+msgstr "Suchen"
+
+#: 
+msgid "Product"
+msgid_plural "Products"
+msgstr[0] "Produkt"
+msgstr[1] "Produkte"
+
+#: Single Product Overview
+msgid "Product overview"
+msgstr "Produktübersicht"
+
+#: Single Product Features
+msgid "Features"
+msgstr "Spezifikationen"
+
+#: Single Product Details
+msgid "Details"
+msgstr "Details"
+
+#: Single Product Description
+msgid "Description"
+msgstr "Beschreibung"
+
+#: Single Product Shipping
+msgid "Free shipping"
+msgstr "Kostenloser Versand"
+
+#: Single Product add to cart
+msgid "Add to cart"
+msgstr "in den Warenkorb"
+
+#: Single Product quantity
+msgid "Quantity"
+msgstr "Menge"
