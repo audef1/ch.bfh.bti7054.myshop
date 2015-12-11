@@ -16,8 +16,16 @@
         <div class="top-header-info">
             <div class="top-contact-info">
                 <ul class="unstyled-list list-inline">
-                    <li><span class="phone"> </span>+4112 345 67 89</li>
-                    <li><span class="mail"> </span><a href="mailto:info@mywebshop.ch">info@mywebshop.ch</a></li>
+                    <li><span class="phone"></span>+4112 345 67 89</li>
+                    <li><span class="mail"></span><a href="mailto:info@mywebshop.ch">info@mywebshop.ch</a></li>
+                    <li>
+                        <span class="lang"></span>
+                        <ul class="langselect">
+                            <li class="de"><img src="/myshop/images/flags/de.png" /></li>
+                            <li class="fr"><img src="/myshop/images/flags/fr.png" /></li>
+                            <li class="en"><img src="/myshop/images/flags/en.png" /></li>
+                        </ul>
+                    </li>
                     <div class="clearfix"> </div>
                 </ul>
             </div>

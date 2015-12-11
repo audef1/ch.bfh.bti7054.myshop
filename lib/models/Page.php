@@ -8,10 +8,19 @@
  */
 class Page
 {
-    private $nicename = "seite";
-    private $content = "Seiteninhalt aus der Datenbank";
+    private $title = "";
+    private $content = "";
 
-    public function __construct() {
+    public function __construct($id) {
+        //connect to db and get page with $id
+        $db = db::getInstance();
+        $mysqli = $db->getConnection();
+        $sql_query = "SELECT * FROM pages WHERE page_id = '" . $id . "' AND hidden != 1 AND lang = 'de_DE';";
+        $result = $mysqli->query($sql_query);
+        $result = $result->fetch_array();
+
+        $this->title = $result['title'];
+        $this->content = $result['content'];
 
     }
 

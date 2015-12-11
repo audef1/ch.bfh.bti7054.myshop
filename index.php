@@ -18,7 +18,7 @@
         <!--- end menu and header --->
 
         <!--- content --->
-            <?php $route->renderView(); ?>
+            <?php $routecontroller->renderView(); ?>
         <!--- end content --->
 
         <!--- footer --->

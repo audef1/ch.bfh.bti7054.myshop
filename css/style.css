@@ -460,9 +460,9 @@ nav a#pull {
   float: left;
 }
 .rslides img {
-  height: auto;
-  border: 0;
-}
+	 height: auto;
+	 border: 0;
+ }
 .callbacks_tabs{
 	display:none;
 }

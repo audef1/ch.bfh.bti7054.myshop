@@ -7,11 +7,11 @@
  * Time: 11:28
  *
  * Mysql database class
- *  usage:
- *  $db = db::getInstance();
- *  $mysqli = $db->getConnection();
- *  $sql_query = "SELECT * FROM .....";
- *  $result = $mysqli->query($sql_query);
+ * usage:
+ * $db = db::getInstance();
+ * $mysqli = $db->getConnection();
+ * $sql_query = "SELECT * FROM ...";
+ * $result = $mysqli->query($sql_query);
  *
 */
 
@@ -20,7 +20,7 @@ class db {
     private static $_instance; //The single instance
     private $_host = "localhost";
     private $_username = "webshop_usr";
-    private $_password = "12345678";
+    private $_password = "WGBca4q9GbusLFqF";
     private $_database = "webshop_db";
 
     /*

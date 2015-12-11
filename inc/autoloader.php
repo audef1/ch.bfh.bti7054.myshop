@@ -9,7 +9,7 @@
 function __autoload($class_name) {
 
     $dirs = [
-        '/myShop/lib/controller/',
+        '/myShop/lib/controllers/',
         '/myShop/lib/views/',
         '/myShop/lib/models/'
     ];
