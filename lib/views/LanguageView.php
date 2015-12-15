@@ -35,10 +35,12 @@ class LanguageView
     }
 
     private function setLang($locale){
-        putenv("LC_ALL=$locale");
-        setlocale(LC_ALL, $locale);
-        bindtextdomain("messages", "./locale");
-        textdomain("messages");
+        //putenv("LC_ALL=$locale");
+        //setlocale(LC_ALL, $locale);
+        //bindtextdomain("messages", "./locale");
+        //textdomain("messages");
+
+        //does not work like this - maybe alter cookie or session-value instead
     }
 
 }
