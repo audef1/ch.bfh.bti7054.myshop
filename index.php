@@ -14,15 +14,17 @@
     </head>
     <body>
         <!--- menu and header --->
-            <?php include("header.php"); ?>
+        <?php include("header.php"); ?>
         <!--- end menu and header --->
 
         <!--- content --->
-            <?php $routecontroller->renderView(); ?>
+        <?php
+            $routecontroller->renderView();
+        ?>
         <!--- end content --->
 
         <!--- footer --->
-            <?php include("footer.php"); ?>
+        <?php include("footer.php"); ?>
         <!--- end footer --->
     </body>
 </html>

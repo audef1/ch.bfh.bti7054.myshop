@@ -26,4 +26,16 @@ class Route
     public function getView($key){
         return $this->_view[$key];
     }
+
+    //for controlling purposes
+    public function getRoutes(){
+
+        $routes = "<pre>";
+        foreach ($this->getUris() as $key => $value){
+            $routes .= $value ." - ". $this->_view[$key] . "<br />";
+        }
+        $routes .= "</pre>";
+
+        return $routes;
+    }
 }

@@ -21,9 +21,7 @@
                     <li>
                         <span class="lang"></span>
                         <ul class="langselect">
-                            <li class="de"><img src="/myshop/images/flags/de.png" /></li>
-                            <li class="fr"><img src="/myshop/images/flags/fr.png" /></li>
-                            <li class="en"><img src="/myshop/images/flags/en.png" /></li>
+                            <!-- here come the languages from the languageview -->
                         </ul>
                     </li>
                     <div class="clearfix"> </div>

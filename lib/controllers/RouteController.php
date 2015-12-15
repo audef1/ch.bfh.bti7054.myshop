@@ -30,20 +30,22 @@ class RouteController
         foreach ($this->model->getUris() as $key => $value) {
 
             if (preg_match("#^$value$#", $this->uriView)){
-                //if (preg_match("#^$value$#", $uriGetParam)){
 
                 if ($this->model->getView($key) === "PageView"){
                     //connect to db and get pageid
                     $db = db::getInstance();
                     $mysqli = $db->getConnection();
-                    $sql_query = "SELECT `page_id` FROM `pages` WHERE `nicename` = '" . str_replace('/','',$this->uriView) . "' AND `hidden` != 1 AND `lang` = 'de_DE';";
+                    $sql_query = "SELECT `page_id` FROM `pages` WHERE `nicename` = '" . str_replace('/','',$value) . "' AND `hidden` != 1;";
                     $result = $mysqli->query($sql_query);
                     $page_id = $result->fetch_array();
 
-                    //if result 0 -> do new query for translationof nicename-> id and language -> return page_id of
+                    //change language to language of selected page
 
                     $page = new Page($page_id['page_id']);
                     $view = new PageView($page);
+
+                    $langselect = new LanguageView($page);
+                    $langselect->render();
                 }
                 else if ($this->model->getView($key) === "SingleProductView"){
                     //db query for product nicename

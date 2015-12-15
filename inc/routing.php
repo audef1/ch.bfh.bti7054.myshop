@@ -14,8 +14,17 @@ $route->add("/product", "SingleProductView");
 $route->add("/contact", "ContactView");
 
 // dynamically create page-routes from db
-$route->add("/about", "PageView");
-$route->add("/shipping", "PageView");
-$route->add("/ueberuns", "PageView");
+$db = db::getInstance();
+$mysqli = $db->getConnection();
+$sql_query = "SELECT `nicename` FROM pages;";
+$result = $mysqli->query($sql_query);
+
+while ($row = $result->fetch_row()) {
+    $rte = "/".$row[0];
+    $route->add($rte, "PageView");
+}
 
 $routecontroller = new RouteController($route);
+
+// controlling -> show available routes
+// echo $route->getRoutes();

@@ -55,7 +55,7 @@
     });
 </script>
 
-<!---- start-smoth-scrolling---->
+<!---- smooth scrolling via jquery ---->
 <script type="text/javascript">
     $(document).ready(function($) {
         $(".scroll").click(function(event){
