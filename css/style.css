@@ -53,6 +53,12 @@ body a{
 .login-rigister{
 	float:right;
 }
+
+ul.langselect{
+	list-style-type: none;
+}
+
+
 span.cart{
 	width: 38px;
 	height: 35px;

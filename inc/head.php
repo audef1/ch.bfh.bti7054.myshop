@@ -11,6 +11,7 @@
 <?php
     require_once("inc/i18n.php");
     require_once("inc/functions.php");
+    require_once("inc/cookies.php");
     require_once("inc/db.php");
     require_once("inc/autoloader.php");
     require_once("inc/routing.php");
@@ -27,6 +28,7 @@
 
 <!---- Scripts ---->
 <script type="text/javascript" src="/myshop/js/jquery.min.js"></script>
+<script type="text/javascript" src="/myshop/js/bootstrap.js"></script>
 <script type="text/javascript" src="/myshop/js/move-top.js"></script>
 <script type="text/javascript" src="/myshop/js/easing.js"></script>
 <script type="text/javascript" src="/myshop/js/jquery.responsiveTabs.js"></script>

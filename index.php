@@ -10,11 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include("head.php"); ?>
+        <?php require_once("inc/head.php"); ?>
     </head>
     <body>
         <!--- menu and header --->
-        <?php include("header.php"); ?>
+        <?php
+            $header = new HeaderView();
+            $header->render();
+        ?>
         <!--- end menu and header --->
 
         <!--- content --->
@@ -24,7 +27,10 @@
         <!--- end content --->
 
         <!--- footer --->
-        <?php include("footer.php"); ?>
+        <?php
+            $footer = new FooterView();
+            $footer->render();
+        ?>
         <!--- end footer --->
     </body>
 </html>

@@ -20,6 +20,17 @@ msgstr "Einloggen"
 msgid "Search"
 msgstr "Suchen"
 
+#: Header Languages
+msgid "de"
+msgstr "Deutsch"
+
+msgid "fr"
+msgstr "Français"
+
+msgid "en"
+msgstr "English"
+
+
 #: 
 msgid "Product"
 msgid_plural "Products"

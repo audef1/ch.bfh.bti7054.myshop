@@ -8,8 +8,8 @@
 
  //Internationalisation
  $locale = "de_DE"; //default language
- if (isSet($_GET["locale"]))
-     $locale = $_GET["locale"];
+ if (isset($_COOKIE['locale']))
+     $locale = $_COOKIE['locale'];
  putenv("LC_ALL=$locale");
  setlocale(LC_ALL, $locale);
  bindtextdomain("messages", "./locale");
