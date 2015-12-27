@@ -19,7 +19,7 @@ class FooterView
             <div class='footer'>
                 <div class='container'>
                     <div class='col-md-3 footer-logo'>
-                        <a href='index.php'><img src='/myshop/images/flogo.png' title='brand-logo' /></a>
+                        <a href='index.php'><img src='/myshop/images/footer-logo.png' title='myshop' /></a>
                     </div>
                     <div class='col-md-9 footer-links'>
                         " . get_bottom_menu() . "
@@ -30,7 +30,7 @@ class FooterView
             <div class='clearfix'> </div>
             <div class='copy-right'>
                 <div class='container'>
-                    <p>myWebshop</p>
+                    <p>&copy; 2015 myshop</p>
                     <a href='#' id='toTop' style='display: block;'> <span id='toTopHover' style='opacity: 1;'> </span></a>
                 </div>
             </div>

@@ -21,13 +21,13 @@ msgid "Search"
 msgstr "Suchen"
 
 #: Header Languages
-msgid "de"
+msgid "de_DE"
 msgstr "Deutsch"
 
-msgid "fr"
+msgid "fr_FR"
 msgstr "Français"
 
-msgid "en"
+msgid "en_EN"
 msgstr "English"
 
 

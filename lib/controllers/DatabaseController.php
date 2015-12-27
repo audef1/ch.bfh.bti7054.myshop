@@ -15,7 +15,7 @@
  *
 */
 
-class db {
+class DatabaseController {
     private $_connection;
     private static $_instance; //The single instance
     private $_host = "localhost";
@@ -35,7 +35,6 @@ class db {
         return self::$_instance;
     }
 
-    // Constructor
     private function __construct() {
         $this->_connection = new mysqli($this->_host, $this->_username,
             $this->_password, $this->_database);

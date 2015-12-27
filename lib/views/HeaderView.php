@@ -43,7 +43,7 @@ class HeaderView
                                 </div>
                                 <div class='login-rigister'>
                                     <ul class='unstyled-list list-inline'>
-                                        <li><a class='login' href='#'>" . _('Login') . "</a></li>
+                                        <li>". $this->getLoginLink() ."</li>
                                         <li><a class='rigister' href='#'>" . _('Register') . "<span> </span></a></li>
                                         <div class='clearfix'> </div>
                                     </ul>
@@ -68,6 +68,15 @@ class HeaderView
                     </div>
                 </div>
             ";
+    }
+
+    static function getLoginLink(){
+        if (session_id() == '' || !isset($_SESSION)) {
+            return "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
+        }
+        else {
+            return "<a class='login' href='/myshop/logout'>" . _('Logout') . "</a>";
+        }
     }
 
 

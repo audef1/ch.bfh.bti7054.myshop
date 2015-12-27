@@ -9,12 +9,23 @@
 $route = new Route();
 
 $route->add("/", "HomeView");
+
+$route->add("/produkte", "ProductView");
+$route->add("/produits", "ProductView");
 $route->add("/products", "ProductView");
+
+$route->add("/produkt", "SingleProductView");
+$route->add("/produit", "SingleProductView");
 $route->add("/product", "SingleProductView");
+
+$route->add("/kontakt", "ContactView");
 $route->add("/contact", "ContactView");
 
+$route->add("/login", "LoginView");
+$route->add("/logout", "LoginView");
+
 // dynamically create page-routes from db
-$db = db::getInstance();
+$db = DatabaseController::getInstance();
 $mysqli = $db->getConnection();
 $sql_query = "SELECT `nicename` FROM pages;";
 $result = $mysqli->query($sql_query);

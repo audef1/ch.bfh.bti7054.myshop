@@ -8,7 +8,6 @@
 
     if (!isset($_COOKIE['locale'])){
         $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        $lang = $lang . "_" . strtoupper($lang);
         $_COOKIE['locale'] = $lang;
     }
-
-    //echo "<pre> BROWSER-LANG: " . $_COOKIE['locale'] . "</pre>";

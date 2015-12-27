@@ -58,6 +58,10 @@ ul.langselect{
 	list-style-type: none;
 }
 
+li.lang img {
+	margin-right: 15px;
+}
+
 
 span.cart{
 	width: 38px;

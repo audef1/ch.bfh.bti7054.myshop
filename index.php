@@ -5,8 +5,9 @@
  * Date: 27.11.15
  * Time: 08:57
  */
+require_once("inc/autoloader.php");
+session_start();
 ?>
-<?php require_once("inc/authentication.php"); ?>
 <!DOCTYPE html>
 <html>
     <head>

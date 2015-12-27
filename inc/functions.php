@@ -58,19 +58,3 @@ function get_bottom_menu() {
     $menu .= "<div class='clearfix'></div></ul>";
     return $menu;
 }
-
-function checklogin($login,$password)
-{
-    $stmt = $db->prepare("SELECT * FROM account WHERE login=?");
-    $stmt->bind_param('s', $login);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if (!$result || $result->num_rows==0) return false;
-    $row = $result->fetch_assoc();
-    $salt=$row["salt"];
-    $hash=$row["hash"];
-    if (hash('ripemd128',$password+$salt)===$hash)
-      return true;
-    else
-      return false;
-}

@@ -12,6 +12,23 @@ msgstr ""
 msgid "Register"
 msgstr "Registrer"
 
+#: Header Login
+msgid "Login"
+msgstr "Login"
+
+#: Header Search
+msgid "Search"
+msgstr "Search"
+
+#: Header Languages
+msgid "de_DE"
+msgstr "Deutsch"
+
+msgid "fr_FR"
+msgstr "Français"
+
+msgid "en_EN"
+msgstr "English"
 #: 
 msgid "Product"
 msgid_plural "Products"

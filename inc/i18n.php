@@ -7,10 +7,10 @@
  */
 
  //Internationalisation
- $locale = "de_DE"; //default language
- if (isset($_COOKIE['locale']))
+if (isset($_COOKIE['locale']))
      $locale = $_COOKIE['locale'];
- putenv("LC_ALL=$locale");
- setlocale(LC_ALL, $locale);
- bindtextdomain("messages", "./locale");
- textdomain("messages");
+
+putenv("LC_ALL=$locale");
+setlocale(LC_ALL, $locale);
+bindtextdomain("messages", "./locale");
+textdomain("messages");

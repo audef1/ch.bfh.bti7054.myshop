@@ -9,11 +9,9 @@
 ?>
 
 <?php
-    require_once("inc/i18n.php");
     require_once("inc/functions.php");
     require_once("inc/cookies.php");
-    require_once("inc/db.php");
-    require_once("inc/autoloader.php");
+    require_once("inc/i18n.php");
     require_once("inc/routing.php");
 ?>
 
