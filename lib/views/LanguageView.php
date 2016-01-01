@@ -21,6 +21,13 @@ class LanguageView
         $locale = $this->model->__get('lang');
         $_COOKIE['locale'] = $locale;
 
+        //reload header-menu
+        echo    "<script>
+                    $(function() {
+                        $('.top-nav').html(\"" . get_top_menu() . "\");
+                    });
+                </script>";
+
         $langs = "<li role='presentation' class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'><img src='/myshop/images/flags/" . $_COOKIE['locale'] . ".png' /></a><ul class='dropdown-menu'>";
 
         foreach ($this->model->__get('languages') as $locale => $lang){
@@ -34,6 +41,7 @@ class LanguageView
                         $('.langselect').html(\"" . $langs . "\");
                     });
                 </script>";
+
     }
 
 }

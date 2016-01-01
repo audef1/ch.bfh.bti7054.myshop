@@ -22,6 +22,7 @@ class DatabaseController {
     private $_username = "webshop_usr";
     private $_password = "WGBca4q9GbusLFqF";
     private $_database = "webshop_db";
+    private $error = "";
 
     /*
     Get an instance of the Database
@@ -52,5 +53,13 @@ class DatabaseController {
     // Get mysqli connection
     public function getConnection() {
         return $this->_connection;
+    }
+
+    public function getError(){
+        return $this->error;
+    }
+
+    public function setError($error){
+        $this->error = $error;
     }
 }

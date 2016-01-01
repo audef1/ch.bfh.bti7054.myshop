@@ -18,7 +18,7 @@ class Page
     public function __construct($id) {
         $this->id = $id;
         //connect to db and get page with $id
-        $db = db::getInstance();
+        $db = DatabaseController::getInstance();
         $mysqli = $db->getConnection();
         $sql_query = "SELECT * FROM pages WHERE page_id = '" . $id . "' AND hidden != 1;";
         $result = $mysqli->query($sql_query);

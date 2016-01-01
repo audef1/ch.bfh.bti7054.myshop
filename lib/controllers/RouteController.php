@@ -38,10 +38,11 @@ class RouteController
                     $sql_query = "SELECT `page_id` FROM `pages` WHERE `nicename` = '" . str_replace('/','',$value) . "' AND `hidden` != 1;";
                     $result = $mysqli->query($sql_query);
                     $page_id = $result->fetch_array();
+                    $page_id = $page_id['page_id'];
 
                     //change language to language of selected page
 
-                    $page = new Page($page_id['page_id']);
+                    $page = new Page($page_id);
                     $view = new PageView($page);
 
                     $langselect = new LanguageView($page);
@@ -49,17 +50,22 @@ class RouteController
                 }
                 else if ($this->model->getView($key) === "SingleProductView"){
                     //db query for product nicename
-                    $product_id = 10; //mockup
-                    $view = new SingleProductView(new Product($product_id));
+                    $product_id = 5;
+
+                    $product = new Product($product_id);
+                    $view = new SingleProductView($product);
+
+                    $langselect = new LanguageView($product);
+                    $langselect->render();
                 }
                 else if ($this->model->getView($key) === "LoginView"){
                     if (isset($_SESSION['user'])) {
 
                         //logout if logout link is called
                         if (str_replace('/','',$value) == "logout"){
-                            $controller = new LoginController();
-                            $controller->logout();
                             $view = new LoginView();
+                            $controller = new LoginController($view);
+                            $controller->logout();
                         }
                         else{
                             $view = new CustomerView(unserialize($_SESSION['user']));
@@ -68,18 +74,19 @@ class RouteController
                     else
                     {
                         if(isset($_POST["login"]) && isset($_POST["password"])) {
-                            $login = $_POST["login"];
+                            $username = $_POST["login"];
                             $password = $_POST["password"];
-                            $controller = new LoginController();
-                            if ($controller->login($login,$password)){
+
+                            $view = new LoginView();
+                            $controller = new LoginController($view);
+
+                            //authenticate
+                            if ($controller->login($username,$password)){
                                 $view = new CustomerView(unserialize($_SESSION['user']));
                             }
-                            else{
-                                $view = new LoginView();
-                            }
+                        }else{
+                            $view = new LoginView();
                         }
-                        $view = new LoginView();
-
                     }
                 }
                 else {

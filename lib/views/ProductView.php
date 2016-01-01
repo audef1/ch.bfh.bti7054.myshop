@@ -9,15 +9,25 @@
 class ProductView
 {
 
+    private $products = [];
+
     public function __construct()
     {
+        //connect to db and get page with $id
+        $db = DatabaseController::getInstance();
+        $mysqli = $db->getConnection();
+        $sql_query = "SELECT * FROM products WHERE lang = '" . $_COOKIE['locale'] . "' AND hidden != 1;";
+        $result = $mysqli->query($sql_query);
+
+        //while ($row = $result->fetch_row()) {
+        //    $products[] = $row->fetch_array();
+        //}
 
     }
 
     public function render()
     {
         echo "
-            <!----content---->
             <div class='content'>
                 <div class='container'>
                     <!----speical-products---->
@@ -87,7 +97,7 @@ class ProductView
                     </div>
                     <!---//speical-products---->
                 </div>
-                <!----content---->
+                <!----//content---->
         ";
     }
 }

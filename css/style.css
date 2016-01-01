@@ -614,6 +614,11 @@ img.r-img{
 	margin: 2em 15px 5em;
 	padding: 1.2em 1.5em;
 }
+.p-content{
+	background: #FFF;
+	margin: 1em 0em 5em;
+	padding: 1.2em 1.5em;
+}
 .s-products-head-left{
 	float:left;
 }
@@ -1472,15 +1477,30 @@ span.mail a:hover{
 	.container{
 		width:80%;
 	}
+
+	.message{
+		margin-bottom: 0px;
+		margin-top: 15px;
+	}
+
 }
 @media (max-width:1280px){
 	.container{
 		width:80%;
 	}
+
+	.message{
+		margin-bottom: 0px;
+		margin-top: 15px;
+	}
 }
 @media (max-width:1024px){
 	.container{
 		width:90%;
+	}
+	.message{
+		margin-bottom: 0px;
+		margin-top: 15px;
 	}
 	.special-products-grid {
 		width: 32%;
@@ -1871,6 +1891,9 @@ span.mail a:hover{
 	.special-products{
 		margin:2em 0;
 	}
+	.p-content{
+		margin:2em 0;
+	}
 	.s-products-head-left h3 {
 		font-size: 1.3em;
 	}
@@ -2022,6 +2045,10 @@ span.mail a:hover{
 		padding:1em;
 	}
 	.special-products{
+		margin: 1em 0;
+		padding: 1em;
+	}
+	.p-content{
 		margin: 1em 0;
 		padding: 1em;
 	}

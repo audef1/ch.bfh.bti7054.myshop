@@ -17,7 +17,9 @@ echo "Passwort: " . $password . "<br/>";
 $salt = "1ca250540cc48a75";
 echo "Salt: " . $salt . "<br />";
 
-$saltedpass = hash("ripemd128",$password+$salt);
+$saltedpass = hash("ripemd128",$password.$salt);
 
 echo "Salted Password: " . $saltedpass;
+
+
 

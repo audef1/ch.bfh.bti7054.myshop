@@ -19,7 +19,7 @@ class HeaderView
                 <div class='container'>
                     <div class='top-header'>
                         <div class='logo'>
-                            <a href='/myshop/'><img src='/myshop/images/logo.png' title='barndlogo' /></a>
+                            <a href='/myshop/'><img src='/myshop/images/logo.png' title='myshop' /></a>
                         </div>
                         <div class='top-header-info'>
                             <div class='top-contact-info'>
@@ -71,7 +71,7 @@ class HeaderView
     }
 
     static function getLoginLink(){
-        if (session_id() == '' || !isset($_SESSION)) {
+        if (!isset($_SESSION['user'])) {
             return "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
         }
         else {

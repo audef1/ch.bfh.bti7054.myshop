@@ -17,8 +17,20 @@ class PageView
         echo "
             <div class='content'>
                 <div class='container'>
-                    <h1>" . utf8_encode($this->model->title) . "</h1>
-                    <p>" . $this->model->content . "</p>
+                    <div class='p-content'>
+                        <div class='p-content-header'>
+                            <div class='p-content-header-left'>
+                                <h1>" . utf8_encode($this->model->title) . "</h1>
+                            </div>
+                            <div class='p-content-header-right'>
+
+                            </div>
+                            <div class='clearfix'> </div>
+                        </div>
+
+                        <p>" . $this->model->content . "</p>
+
+                    </div>
                 </div>
             </div>
         ";

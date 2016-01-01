@@ -9,18 +9,37 @@
 function get_top_menu() {
     $menu = "<ul class='top-nav'>";
 
-    /*
-     * db query for pages
-    $pages = queryresult
-    mockup data
-    */
-
+    $lang = $_COOKIE['locale'];
     $pages = array();
-    $pages = array( "0" => array("0" => "Produkte", "1" => "/myshop/products"),
-                    "1" => array("0" => "Über uns", "1" => "/myshop/about"),
-                    "2" => array("0" => "Versand", "1" => "/myshop/shipping"),
-                    "3" => array("0" => "Kontakt", "1" => "/myshop/contact"),
-    );
+
+        //add products page to menu
+        if ($lang == "en_EN"){
+            $pages[] = array("Products", "/myshop/products");
+        }
+        else if ($lang == "de_DE"){
+            $pages[] = array("Produkte", "/myshop/produkte");
+        }
+        else if ($lang == "fr_FR"){
+            $pages[] = array("Produits", "/myshop/produits");
+        }
+
+    // dynamically create page-routes from db
+    $db = DatabaseController::getInstance();
+    $mysqli = $db->getConnection();
+    $sql_query = "SELECT `nicename`,`title`,`pos` FROM pages WHERE lang = '". $lang ."' AND inmenu = '1' ORDER BY pos DESC;";
+    $result = $mysqli->query($sql_query) or trigger_error($mysqli->error."[$sql_query]");
+
+    while ($row = $result->fetch_row()) {
+        $pages[] = array(utf8_encode($row[1]), "/myshop/" . $row[0]);
+    }
+
+        //add contact page to menu
+        if ($lang == "en_EN" || $lang == "fr_FR"){
+            $pages[] = array("Contact", "/myshop/contact");
+        }
+        else if ($lang == "de_DE"){
+            $pages[] = array("Kontakt", "/myshop/kontakt");
+        }
 
     foreach ($pages as $page) {
         $menu .= "<li><a href='". $page[1] ."'>". $page[0] ."</a><span></span></li>";
@@ -33,21 +52,41 @@ function get_top_menu() {
 function get_bottom_menu() {
     $menu = "<ul class='unstyled-list list-inline'>";
 
-    /*
-     * db query for pages
-    $pages = queryresult
-    mockup data
-    */
-
+    $lang = $_COOKIE['locale'];
     $pages = array();
-    $pages = array( "0" => array("0" => "Produkte", "1" => "/products"),
-        "1" => array("0" => "Über uns", "1" => "/myshop/about"),
-        "2" => array("0" => "Versand", "1" => "/myshop/shipping"),
-        "3" => array("0" => "Kontakt", "1" => "/myshop/contact"),
-    );
+
+        //add products page to menu
+        if ($lang == "en_EN"){
+            $pages[] = array("Products", "/myshop/products");
+        }
+        else if ($lang == "de_DE"){
+            $pages[] = array("Produkte", "/myshop/produkte");
+        }
+        else if ($lang == "fr_FR"){
+            $pages[] = array("Produits", "/myshop/produits");
+        }
+
+    // dynamically create page-routes from db
+    $db = DatabaseController::getInstance();
+    $mysqli = $db->getConnection();
+    $sql_query = "SELECT `nicename`,`title`,`pos` FROM pages WHERE lang = '". $lang ."' AND inmenu = '1' ORDER BY pos DESC;";
+    $result = $mysqli->query($sql_query) or trigger_error($mysqli->error."[$sql_query]");
+
+    while ($row = $result->fetch_row()) {
+        $pages[] = array(utf8_encode($row[1]), "/myshop/" . $row[0]);
+    }
+
+        //add contact page to menu
+        if ($lang == "en_EN" || $lang == "fr_FR"){
+            $pages[] = array("Contact", "/myshop/contact");
+        }
+        else if ($lang == "de_DE"){
+            $pages[] = array("Kontakt", "/myshop/kontakt");
+        }
 
     $l = count($pages);
 
+    //add menu with separators
     for ($i = 0; $i < $l; $i++) {
         if ($i == $l-1)
             $menu .= "<li><a href='" . $pages[$i][1] . "'> " . $pages[$i][0] ."</a></li>";

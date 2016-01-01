@@ -69,8 +69,7 @@ class SingleProductView
 							<h5>" . $this->model->__get('price2') . " CHF</h5>
 						</div>
 						<div class='product-price-details'>
-							<p class='text-right'>This is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,e </p>
-							<a class='shipping' href='#'><span> </span>" . _('Free shipping') . "</a>
+							<a class='shipping' href='#'><span></span>" . _('Free shipping') . "</a>
 							<div class='clearfix'> </div>
 							<div class='product-size-qty'>
 								<div class='pro-size'>

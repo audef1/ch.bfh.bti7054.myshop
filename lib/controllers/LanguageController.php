@@ -11,15 +11,22 @@ class LanguageController
 
     private $langs = [];
 
-    public function __construct($model){
+    public function __construct($model = ""){
 
-        $this->langs = $model->langs;
-
-        if (get_class($model) == "Product"){
+        if ($model == ""){
 
         }
-        else if (get_class($model) == "Page"){
+        else{
+            $this->langs = $model->langs;
 
+            if (get_class($model) == "Product"){
+
+            }
+            else if (get_class($model) == "Page"){
+
+            }
         }
+
+
     }
 }
