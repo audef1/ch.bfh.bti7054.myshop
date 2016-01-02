@@ -15,6 +15,15 @@ class HeaderView
 
     public function render(){
 
+        $loginlink = "";
+        if (!isset($_SESSION['user'])) {
+            $loginlink = "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
+        }
+        else {
+            $user = unserialize($_SESSION['user']);
+            $loginlink =  "<a class='login' href='/myshop/logout'>" . $user->__get('username') . " <span>(". _('Logout') . ")</span></a>";
+        }
+
         echo "
                 <div class='container'>
                     <div class='top-header'>
@@ -43,7 +52,7 @@ class HeaderView
                                 </div>
                                 <div class='login-rigister'>
                                     <ul class='unstyled-list list-inline'>
-                                        <li>". $this->getLoginLink() ."</li>
+                                        <li class='login'>". $loginlink ."</li>
                                         <li><a class='rigister' href='#'>" . _('Register') . "<span> </span></a></li>
                                         <div class='clearfix'> </div>
                                     </ul>
@@ -69,15 +78,5 @@ class HeaderView
                 </div>
             ";
     }
-
-    static function getLoginLink(){
-        if (!isset($_SESSION['user'])) {
-            return "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
-        }
-        else {
-            return "<a class='login' href='/myshop/logout'>" . _('Logout') . "</a>";
-        }
-    }
-
 
 }

@@ -1471,6 +1471,11 @@ span.mail a:hover{
 .contact-grids {
 	margin-bottom: 1em;
 }
+
+.message{
+	margin-bottom: 0px;
+	margin-top: 15px;
+}
 /*----//End-contact----*/
 /*---- Responsive-design -----*/
 @media (max-width:1366px){
@@ -2099,4 +2104,16 @@ span.mail a:hover{
 	.product-details-row1-head p {
 		font-size: 1.1em;
 	}
+}
+
+/* Symbols in Customercenter */
+.p-content span.phone{
+	background:url(../images/phone-icon.png) no-repeat 0px 0px !important;
+	vertical-align:middle !important;
+	margin-right:0.2em !important;
+}
+.p-content li span.mail{
+	background:url(../images/mail-icon.png) no-repeat 0px 0px !important;
+	vertical-align:middle !important;
+	margin-right:0.2em !important;
 }

@@ -24,7 +24,16 @@ class LoginController
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
-            $_SESSION['user'] = serialize(new Customer($username));
+
+            //connect to db and get pageid
+            $db = DatabaseController::getInstance();
+            $mysqli = $db->getConnection();
+            $sql_query = "SELECT customer_id FROM customer WHERE customer_login = '" . $username . "';";
+            $result = $mysqli->query($sql_query);
+            $customer_id = $result->fetch_array();
+            $customer_id = $customer_id['customer_id'];
+
+            $_SESSION['user'] = serialize(new Customer($customer_id));
 
             return true;
         }
