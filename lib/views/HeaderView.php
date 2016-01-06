@@ -9,7 +9,53 @@
 class HeaderView
 {
 
+    private $login;
+    private $cart;
+
     public function __construct() {
+
+        if (!isset($_SESSION['user'])) {
+            $this->login = "<li class='login'><a class='login' href='/myshop/login'>" . _('Login') . "</a></li>
+                            <li><a class='rigister' href='/myshop/register'>" . _('Register') . "<span></span></a></li>
+                            <div class='clearfix'> </div>";
+        }
+        else {
+            $user = unserialize($_SESSION['user']);
+            $this->login =  "";
+            $this->login = "<li class='login'><a class='login' href='/myshop/myaccount'>" . $user->__get('firstname') . "</a></li>
+                            <li><a class='rigister' href='/myshop/logout'>" . _('Logout') . "<span></span></a></li>
+                            <div class='clearfix'> </div>";
+        }
+
+    }
+
+    public function update(){
+
+        //update the loginlink
+        $this->login = "";
+        if (!isset($_SESSION['user'])) {
+            $this->login = "<li class='login'><a class='login' href='/myshop/login'>" . _('Login') . "</a></li><li><a class='rigister' href='/myshop/register'>" . _('Register') . "<span></span></a></li><div class='clearfix'> </div>";
+        }
+        else {
+            $user = unserialize($_SESSION['user']);
+            $this->login =  "";
+            $this->login = "<li class='login'><a class='login' href='/myshop/myaccount'>" . $user->__get('firstname') . "</a></li><li><a class='rigister' href='/myshop/logout'>" . _('Logout') . "<span></span></a></li><div class='clearfix'> </div>";
+        }
+        echo "<script>$(function() { $('.loginregister').html(\"$this->login\"); }); </script>";
+
+        //update the languageselection (evtl)
+        //update the menu
+
+        //update cart count
+        if (!isset($_SESSION['cart'])) {
+            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='" . _('cart') . "'>". _('Cart') ."</a>";
+        }
+        else {
+            $cart = unserialize($_SESSION['cart']);
+            $this->cart =  "";
+            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='" . _('cart') . "'>". _('Cart') ."<span class='badge'>". $cart->count() ."</span></a>";
+        }
+        echo "<script>$(function() { $('.add-to-cart ul').html(\"$this->cart\"); }); </script>";
 
     }
 
@@ -33,8 +79,8 @@ class HeaderView
                         <div class='top-header-info'>
                             <div class='top-contact-info'>
                                 <ul class='unstyled-list list-inline'>
-                                    <li><span class='phone'></span>+4112 345 67 89</li>
-                                    <li><span class='mail'></span><a href='mailto:info@mywebshop.ch'>info@mywebshop.ch</a></li>
+                                    <li><i class='fa fa-phone'></i> +4112 345 67 89</li>
+                                    <li><i class='fa fa-envelope'></i> <a href='mailto:info@mywebshop.ch'>info@mywebshop.ch</a></li>
                                     <li>
                                         <span class='lang'></span>
                                         <ul class='langselect'>
@@ -47,14 +93,12 @@ class HeaderView
                             <div class='cart-details'>
                                 <div class='add-to-cart'>
                                     <ul class='unstyled-list list-inline'>
-                                        <a href='cart.php'><span class='cart'></span></a>
+                                    " . $this->cart . "
                                     </ul>
                                 </div>
                                 <div class='login-rigister'>
-                                    <ul class='unstyled-list list-inline'>
-                                        <li class='login'>". $loginlink ."</li>
-                                        <li><a class='rigister' href='#'>" . _('Register') . "<span> </span></a></li>
-                                        <div class='clearfix'> </div>
+                                    <ul class='unstyled-list list-inline loginregister'>
+                                        " . $this->login . "
                                     </ul>
                                 </div>
                                 <div class='clearfix'> </div>

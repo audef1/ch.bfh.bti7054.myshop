@@ -89,6 +89,33 @@ class RouteController
                         }
                     }
                 }
+                else if($this->model->getView($key) === "CustomerView"){
+                    if (isset($_SESSION['user'])) {
+                        $view = new CustomerView(unserialize($_SESSION['user']));
+                    }
+                    else{
+                        $view = new LoginView();
+                    }
+                }
+                else if($this->model->getView($key) === "CartView") {
+
+                    if (isset($_SESSION['cart'])) {
+                        $cart = unserialize($_SESSION['cart']);
+                        $view = new CartView($cart);
+                    } else {
+                        $cart = new Cart();
+
+                        //test-data
+                        $cart->add(new Product(1));
+                        $cart->add(new Product(2));
+                        $cart->add(new Product(3));
+                        $cart->add(new Product(4));
+                        //$cart->remove(10001);
+
+                        $_SESSION['cart'] = serialize($cart);
+                        $view = new CartView($cart);
+                    }
+                }
                 else {
                     $useView = $this->model->getView($key);
                     $view = new $useView();

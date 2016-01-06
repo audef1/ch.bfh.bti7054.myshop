@@ -97,28 +97,3 @@ function get_bottom_menu() {
     $menu .= "<div class='clearfix'></div></ul>";
     return $menu;
 }
-
-function updateLoginLink(){
-    // update the login / logoutlink
-    $loginlink = "";
-    if (!isset($_SESSION['user'])) {
-        $loginlink = "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
-    }
-    else {
-        $user = unserialize($_SESSION['user']);
-        $loginlink =  "<a class='login' href='/myshop/logout'>" . $user->__get('firstname') . " <span>(". _('Logout') . ")</span></a>";
-    }
-    echo "<script>$(function() { $('.login').html(\"$loginlink\"); }); </script>";
-}
-
-function getLoginLink(){
-    $loginlink = "";
-    if (!isset($_SESSION['user'])) {
-        $loginlink = "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
-    }
-    else {
-        $user = unserialize($_SESSION['user']);
-        $loginlink =  "<a class='login' href='/myshop/logout'>" . $user->__get('firstname') . " <span>(". _('Logout') . ")</span></a>";
-    }
-    echo $loginlink;
-}

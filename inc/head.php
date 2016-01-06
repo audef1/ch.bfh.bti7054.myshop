@@ -23,6 +23,7 @@
 <link href="/myshop/css/style.css" rel='stylesheet' type='text/css' />
 <link href="/myshop/css/etalage.css" rel='stylesheet' type='text/css' />
 <link href="/myshop/css/bootstrap-responsive.css" rel='stylesheet' type='text/css' />
+<link href="/myshop/css/font-awesome.min.css" rel='stylesheet' type='text/css' />
 
 <!---- Scripts ---->
 <script type="text/javascript" src="/myshop/js/jquery.min.js"></script>

@@ -46,8 +46,8 @@ class CustomerView
                                 . utf8_encode($this->model->address) . "<br/>"
                                 . utf8_encode($this->model->zip) . " " . utf8_encode($this->model->location) . "<br/>"
                                 . "<h3>" . _('Contact Information') . "</h3>"
-                                . "<span class='phone'></span>" . $this->model->phone ."<br/>"
-                                . "<span class='mail'></span><a href='mailto:". $this->model->email ."'>" . $this->model->email . "</a>"
+                                . "<i class='fa fa-phone'></i>" . $this->model->phone ."<br/>"
+                                . "<i class='fa fa-envelope'></i><a href='mailto:". $this->model->email ."'>" . $this->model->email . "</a>"
                                 ."
                             </div>
                             <div class='col-md-6'>
@@ -65,9 +65,6 @@ class CustomerView
                 </div>
             </div>
         ";
-
-        updateLoginLink();
-
     }
 
 }

@@ -2117,3 +2117,32 @@ span.mail a:hover{
 	vertical-align:middle !important;
 	margin-right:0.2em !important;
 }
+
+i {
+	margin-right: 10px;
+}
+
+
+/* Shopping cart */
+tbody tr:first-child{
+	border-top: 2px solid lightgrey;
+}
+
+/* Shopping cart */
+tbody tr:last-child{
+	border-bottom: 2px solid lightgrey;
+}
+
+.line {
+	width: 100%;
+	margin-top: 20px;
+	border-top: 1px solid lightgrey;
+}
+
+.badge {
+	margin-left: 10px;
+}
+
+.add-to-cart {
+	margin-top: 10px;
+}

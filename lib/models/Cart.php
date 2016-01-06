@@ -18,23 +18,49 @@ class Cart
 
     public function add(Product $product){
         $this->products[] = $product;
-        //if product exists in product->qty++ (possibly check product->name)
+        $this->updateBalance();
     }
 
-    public function remove(Product $product){
-        //this->products->product->qty--
-        //if product->qty==0 -> delete(product)
+    public function remove($productnumber){
+        foreach($this->products as $product){
+            if ($product->__get('number') == $productnumber){
+                unset($this->products[array_search($product,$this->products,false)]);
+            }
+        }
+        $this->updateBalance();
     }
 
-    public function delete(Product $product){
-        //remove product from products
+    public function update($productnumber, $amount){
+        foreach ($this->products as $product){
+            if ($product->__get('number') == $productnumber){
+                $product->__set('amount', $amount);
+            }
+        }
+        $this->updateBalance();
     }
 
     public function getCartBalance(){
-        // cart-balance = 0
-        //foreach (products as product)
-        // cart-balance += product->price * product->qty
-        // return cart-balance
+        return $this->balance;
+    }
+
+    public function getProducts(){
+        return $this->products;
+    }
+
+    private function updateBalance(){
+        if (!empty($this->products)){
+            $this->balance = 0;
+            foreach ($this->products as $product){
+                $this->balance += $product->__get('price2') * $product->__get('amount');
+            }
+        }
+        else{
+            $this->balance = 0;
+        }
+    }
+
+    public function count(){
+        return count($this->products);
     }
 
 }

@@ -12,9 +12,13 @@ msgstr ""
 msgid "Register"
 msgstr "Registrieren"
 
-#: Header Login
+#: Login
 msgid "Login"
 msgstr "Einloggen"
+
+#: Logout
+msgid "Logout"
+msgstr "Ausloggen"
 
 #: Header Search
 msgid "Search"
@@ -36,6 +40,22 @@ msgid "Product"
 msgid_plural "Products"
 msgstr[0] "Produkt"
 msgstr[1] "Produkte"
+
+#: cart link
+msgid "cart"
+msgstr "warenkorb"
+
+#: cart
+msgid "Cart"
+msgstr "Warenkorb"
+
+#: your cart
+msgid "Your Cart"
+msgstr "Ihr Warenkorb"
+
+#: checkout
+msgid "checkout"
+msgstr "Zur Kasse"
 
 #: Single Product Overview
 msgid "Product overview"

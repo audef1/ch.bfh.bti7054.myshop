@@ -61,7 +61,6 @@ class LoginView
         //check the form
         echo "<script>$('#loginform').validate();</script>";
 
-        updateLoginLink();
     }
 
 }

@@ -18,11 +18,17 @@ $route->add("/produkt", "SingleProductView");
 $route->add("/produit", "SingleProductView");
 $route->add("/product", "SingleProductView");
 
+$route->add("/cart", "CartView");
+$route->add("/warenkorb", "CartView");
+$route->add("/panier", "CartView");
+
 $route->add("/kontakt", "ContactView");
 $route->add("/contact", "ContactView");
 
 $route->add("/login", "LoginView");
 $route->add("/logout", "LoginView");
+
+$route->add("/myaccount", "CustomerView");
 
 // dynamically create page-routes from db
 $db = DatabaseController::getInstance();

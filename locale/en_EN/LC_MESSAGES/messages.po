@@ -20,6 +20,10 @@ msgstr "Login"
 msgid "Search"
 msgstr "Chercher"
 
+#: cart link
+msgid "cart"
+msgstr "cart"
+
 #: Header Languages
 msgid "de_DE"
 msgstr "Deutsch"

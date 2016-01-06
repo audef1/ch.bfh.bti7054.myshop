@@ -24,6 +24,9 @@ session_start();
         <!--- content --->
         <?php
             $routecontroller->renderView();
+
+            //update headerinfo (buttons)
+            $header->update();
         ?>
         <!--- end content --->
 
