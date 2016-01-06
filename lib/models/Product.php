@@ -12,7 +12,7 @@ class Product
     private $number = "10001";
     private $name1 = "Geiler Schuh #1";
     private $name2 = "Ein Muss für jeden Schuh-Fan!";
-    private $nicename = "geilerschuh1";
+    private $nicename = "";
     private $price1 = "10.00"; //normal price
     private $price2 = "8.00"; //effective price with bargain
     private $stock = "1";
@@ -37,6 +37,7 @@ class Product
 
         $this->name1 = $res['product_name1'];
         $this->name2 = $res['product_name2'];
+        $this->nicename = $res['product_nicename'];
         $this->price1 = $res['product_price1'];
         $this->price2 = $res['product_price2'];
         $this->number = $res['product_number'];

@@ -9,24 +9,29 @@
 class ProductView
 {
 
-    private $products = [];
+    private $model;
 
-    public function __construct()
+    public function __construct(Products $model)
     {
-        //connect to db and get page with $id
-        $db = DatabaseController::getInstance();
-        $mysqli = $db->getConnection();
-        $sql_query = "SELECT * FROM products WHERE lang = '" . $_COOKIE['locale'] . "' AND hidden != 1;";
-        $result = $mysqli->query($sql_query);
-
-        //while ($row = $result->fetch_row()) {
-        //    $products[] = $row->fetch_array();
-        //}
-
+        $this->model = $model;
     }
 
     public function render()
     {
+        $products = "";
+
+        foreach ($this->model->getProducts() as $product){
+
+            $productlink = "/myshop/". _('product') . "/". $product->__get('nicename');
+
+            $products .= "<div class='col-md-3 special-products-grid text-center'>
+                                <a class='brand-name' href='" . $productlink . "'><img src='/myshop/images/b1.jpg' title='name'></a>
+                                <a class='product-here' href='" . $productlink . "'><img src='/myshop/images/p1.jpg' title='product-name'></a>
+                                <h4><a href='" . $productlink . "'>". $product->__get('name1') ."</a></h4>
+                                <a class='product-btn' href='" . $productlink . "'><span>" . $product->__get('price2') . "</span><small>". _('Get now!') ."</small><label></label></a>
+                            </div>";
+        }
+
         echo "
             <div class='content'>
                 <div class='container'>
@@ -37,61 +42,14 @@ class ProductView
                                 <h3>SPECIAL <span>PRODUCTS</span></h3>
                             </div>
                             <div class='s-products-head-right'>
-                                <a href='products.php'><span> </span>view all products</a>
+                                <a href='" . _('products') . "'><span> </span>view all products</a>
                             </div>
                             <div class='clearfix'> </div>
                         </div>
                         <!----special-products-grids---->
                         <div class='special-products-grids'>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b1.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p1.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Nike Roshe Run</a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b2.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p2.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Line Link 67009</a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b3.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p3.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Minimus Zero </a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b4.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p4.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'> Athletic Shoe </a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b5.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p2.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Veronique </a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b6.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p6.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Suede Boots </a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b7.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p7.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Barricade 6.0  </a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='single-page.php'><img src='/myshop/images/b1.jpg' title='name' /></a>
-                                <a class='product-here' href='single-page.php'><img src='/myshop/images/p8.jpg' title='product-name' /></a>
-                                <h4><a href='single-page.php'>Cotu Classic </a></h4>
-                                <a class='product-btn' href='single-page.php'><span>109.90$</span><small>GET NOW</small><label> </label></a>
-                            </div>
-                            <div class='clearfix'> </div>
+                        " . $products . "
+                        <div class='clearfix'> </div>
                         </div>
                         <!---//special-products-grids---->
                     </div>

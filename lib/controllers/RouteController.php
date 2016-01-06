@@ -48,9 +48,31 @@ class RouteController
                     $langselect = new LanguageView($page);
                     $langselect->render();
                 }
+                else if ($this->model->getView($key) === "ProductView"){
+                    $products = new Products();
+                    $view = new ProductView($products);
+                }
                 else if ($this->model->getView($key) === "SingleProductView"){
-                    //db query for product nicename
-                    $product_id = 5;
+
+                    $params = $this->additionalParam;
+
+                    if (!isset($params[2])){
+                        $product_id = 1;
+                    }
+                    else{
+                        //connect to db and get pageid
+                        $db = DatabaseController::getInstance();
+                        $mysqli = $db->getConnection();
+                        $sql_query = "SELECT `product_id` FROM `product` WHERE `product_nicename` = '" . $params[2] . "' AND `hidden` != 1;";
+                        if ($result = $mysqli->query($sql_query)){
+                            $product_id = $result->fetch_array();
+                            $product_id = $product_id['product_id'];
+                        }
+                        else{
+                            $product_id = 1;
+                        }
+                    }
+
 
                     $product = new Product($product_id);
                     $view = new SingleProductView($product);
@@ -101,6 +123,28 @@ class RouteController
 
                     if (isset($_SESSION['cart'])) {
                         $cart = unserialize($_SESSION['cart']);
+                        $params = $this->additionalParam;
+
+                        //update article
+                        if (isset($params[2])){
+                            $action = $params[2];
+                        }
+                        if (isset($params[3])){
+                            $productnr = $params[3];
+                        }
+                        if (isset($params[4])){
+                            $newamount = $params[4];
+                        }
+
+                        if (!empty($action) && $action == "update" && !empty($productnr) && !empty($newamount)){
+                            $cart->update($productnr, $newamount);
+                        }
+
+                        if (!empty($action) && $action == "delete" && !empty($productnr)){
+                            $cart->remove($productnr);
+                        }
+
+                        $_SESSION['cart'] = serialize($cart);
                         $view = new CartView($cart);
                     } else {
                         $cart = new Cart();

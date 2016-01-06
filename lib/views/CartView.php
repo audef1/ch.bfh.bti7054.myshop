@@ -38,13 +38,15 @@ class CartView
                                 <b>" . $product->__get('name1') . "</b>
                             </td>
                             <td>
-                                <input type='number' name='quantity' min='0' value='" . $product->__get('amount') . "'>
-                                <i class='fa fa-plus-square'></i>
-                                <i class='fa fa-minus-square'></i>
+                                <input type='number' id='". $product->__get('number') ."' min='0' value='" . $product->__get('amount') . "'>
+                                <a href='/myshop/". _('cart') ."/update/". $product->__get('number')."/" . ($product->__get('amount') + 1) . "'><i class='fa fa-plus-square'></i></a>
+                                <a href='/myshop/". _('cart') ."/update/". $product->__get('number')."/" . ($product->__get('amount') - 1) . "'><i class='fa fa-minus-square'></i></a>
                             </td>
                             <td>" . number_format($product->__get('price2'), 2) . "</td>
                             <td>" . number_format($product->__get('price2') * $product->__get('amount'), 2) . "</td>
-                            <td><i class='fa fa-trash'></i></td>
+                            <td>
+                                <a href='/myshop/". _('cart') ."/delete/". $product->__get('number') . "'><i class='fa fa-trash'></i></a>
+                            </td>
                            </tr>";
         }
 
@@ -52,7 +54,7 @@ class CartView
             echo _('Your Cart is empty.');
         }
         else{
-            echo "<form method='post' action='". _('cart') ."'>
+            echo "<form id='cartform' action='". _('cart') ."' method='post'>
                     <div class='table-responsive'>
                       <table class='table'>
                         <thead>
@@ -71,7 +73,9 @@ class CartView
                         </tbody>
                       </table>
                     </div>
-                    <div class='total'><strong>Total: ". number_format($this->model->getCartBalance(), 2) ." CHF</strong></div><input type='submit' value='". _('checkout') ."'/>
+                    <div class='total'><strong>Total: ". number_format($this->model->getCartBalance(), 2) ." CHF</strong></div>
+                    <input type='text' id='action' value='' style='display: none;'/>
+                    <input type='submit' id='submitcheckout' value='". _('checkout') ."'/>
 
                   </form>";
         }
