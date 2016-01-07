@@ -38,7 +38,7 @@ class CartView
                                 <b>" . $product->__get('name1') . "</b>
                             </td>
                             <td>
-                                <input type='number' id='". $product->__get('number') ."' min='0' value='" . $product->__get('amount') . "'>
+                                <input type='number' id='". $product->__get('number') ."' min='0' value='" . $product->__get('amount') . "' disabled>
                                 <a href='/myshop/". _('cart') ."/update/". $product->__get('number')."/" . ($product->__get('amount') + 1) . "'><i class='fa fa-plus-square'></i></a>
                                 <a href='/myshop/". _('cart') ."/update/". $product->__get('number')."/" . ($product->__get('amount') - 1) . "'><i class='fa fa-minus-square'></i></a>
                             </td>

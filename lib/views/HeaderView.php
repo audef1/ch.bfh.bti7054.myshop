@@ -53,7 +53,7 @@ class HeaderView
         else {
             $cart = unserialize($_SESSION['cart']);
             $this->cart =  "";
-            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='" . _('cart') . "'>". _('Cart') ."<span class='badge'>". $cart->count() ."</span></a>";
+            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='/myshop/" . _('cart') . "'>". _('Cart') ."<span class='badge'>". $cart->count() ."</span></a>";
         }
         echo "<script>$(function() { $('.add-to-cart ul').html(\"$this->cart\"); }); </script>";
 

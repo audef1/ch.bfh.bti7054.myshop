@@ -73,7 +73,6 @@ class RouteController
                         }
                     }
 
-
                     $product = new Product($product_id);
                     $view = new SingleProductView($product);
 
