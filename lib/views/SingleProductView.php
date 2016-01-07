@@ -114,7 +114,7 @@ class SingleProductView
                                             })
                                             .done(function( msg ) {
                                                 $('.badge').html(parseInt($('.badge').text()) + 1);
-                                                $('.message').html('Hallo');
+                                                $('.message').html('Product added to cart');
                                             });
                                         });
 									</script>
