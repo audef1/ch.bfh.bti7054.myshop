@@ -72,6 +72,9 @@ class SingleProductView
 							<a class='shipping' href='#'><span></span>" . _('Free shipping') . "</a>
 							<div class='clearfix'> </div>
 							<div class='product-size-qty'>
+								<div class='pro-qty'>
+									<span>" . _('Stock') . ": " . $this->model->__get('stock') . "</span>
+								</div>
 								<div class='pro-size'>
 									<span>Size:</span>
 									<select>
@@ -84,7 +87,7 @@ class SingleProductView
 								</div>
 								<div class='pro-qty'>
 									<span>" . _('Quantity') . ":</span>
-									<select>
+									<select id='qty'>
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
@@ -96,8 +99,25 @@ class SingleProductView
 							</div>
 							<div class='clearfix'> </div>
 							<div class='product-cart-share'>
+								<div class='message'></div>
 								<div class='add-cart-btn'>
-									<input type='button' value='" . _('Add to cart') . "' />
+									<input type='button' id='addtocart' value='" . _('Add to cart') . "' />
+									<script>
+                                        $( '#addtocart' ).click(function() {
+
+                                        var qty = $('#qty').find(\":selected\").text();
+                                        carturl = \"/myshop/". _('cart') ."/add/". $this->model->__get('number') ."/\" + qty + \"\";
+
+                                        $.ajax({
+                                                method: 'GET',
+                                                url: carturl,
+                                            })
+                                            .done(function( msg ) {
+                                                $('.badge').html(parseInt($('.badge').text()) + 1);
+                                                $('.message').html('Hallo');
+                                            });
+                                        });
+									</script>
 								</div>
 							</div>
 						</div>

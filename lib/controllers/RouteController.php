@@ -60,7 +60,7 @@ class RouteController
                         $product_id = 1;
                     }
                     else{
-                        //connect to db and get pageid
+                        //connect to db and get productid
                         $db = DatabaseController::getInstance();
                         $mysqli = $db->getConnection();
                         $sql_query = "SELECT `product_id` FROM `product` WHERE `product_nicename` = '" . $params[2] . "' AND `hidden` != 1;";
@@ -124,7 +124,7 @@ class RouteController
                         $cart = unserialize($_SESSION['cart']);
                         $params = $this->additionalParam;
 
-                        //update article
+                        // set variables
                         if (isset($params[2])){
                             $action = $params[2];
                         }
@@ -132,15 +132,38 @@ class RouteController
                             $productnr = $params[3];
                         }
                         if (isset($params[4])){
-                            $newamount = $params[4];
+                            $amount = $params[4];
                         }
 
-                        if (!empty($action) && $action == "update" && !empty($productnr) && !empty($newamount)){
-                            $cart->update($productnr, $newamount);
+                        //update
+                        if (!empty($action) && $action == "update" && !empty($productnr) && !empty($amount)){
+                            $cart->update($productnr, $amount);
                         }
 
+                        //delete
                         if (!empty($action) && $action == "delete" && !empty($productnr)){
                             $cart->remove($productnr);
+                        }
+
+                        //add
+                        if (!empty($action) && $action == "add"){
+
+                                //connect to db and get productid
+                                $db = DatabaseController::getInstance();
+                                $mysqli = $db->getConnection();
+                                $sql_query = "SELECT `product_id` FROM `product` WHERE `product_number` = '" . $productnr . "';";
+                                if ($result = $mysqli->query($sql_query)){
+                                    $product_id = $result->fetch_array();
+                                    $product_id = $product_id['product_id'];
+                                }
+                                else{
+                                    $product_id = 1;
+                                }
+
+                            $product = new Product($product_id);
+                            $product->__set('amount', $amount);
+
+                            $cart->add($product);
                         }
 
                         $_SESSION['cart'] = serialize($cart);

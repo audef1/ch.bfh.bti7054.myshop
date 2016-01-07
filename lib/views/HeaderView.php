@@ -111,12 +111,12 @@ class HeaderView
                             " . get_top_menu() . "
                             <a href='#' id='pull'><img src='/myshop/images/nav-icon.png' title='menu' /></a>
                         </nav>
-                        <div class='top-header-search-box'>
+                        <!-- <div class='top-header-search-box'>
                             <form>
                                 <input type='text' placeholder='" . _('Search') . "' required  maxlength='22'>
                                 <input type='submit' value=' ' >
                             </form>
-                        </div>
+                        </div> -->
                         <div class='clearfix'></div>
                     </div>
                 </div>

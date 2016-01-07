@@ -57,6 +57,16 @@ class Product
         }
 
         $result->close();
+
+        //get stock from stock table
+        $sql_query = "SELECT stock FROM product_stock WHERE product_number = '" . $this->number . "';";
+        $result = $mysqli->query($sql_query);
+        $res = $result->fetch_array();
+
+        $this->stock = $res['stock'];
+
+        $result->close();
+
     }
 
     public function __get($property) {

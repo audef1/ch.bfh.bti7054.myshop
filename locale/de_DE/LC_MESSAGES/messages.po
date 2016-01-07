@@ -45,6 +45,10 @@ msgstr[1] "Produkte"
 msgid "cart"
 msgstr "warenkorb"
 
+#: product link
+msgid "product"
+msgstr "produkt"
+
 #: cart
 msgid "Cart"
 msgstr "Warenkorb"

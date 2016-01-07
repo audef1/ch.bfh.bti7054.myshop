@@ -1131,13 +1131,13 @@ a.shipping span{
 	float:right;
 }
 .add-cart-btn input[type="button"]{
-	background: url(../images/cart-icon.png) no-repeat 136px 13.5px #EF3326;
+	background: #EF3326;
 	border: 1px solid #B64E30;
 	border-top: 2px solid #B64E30;
 	color: #FFF;
 	font-size: 1.2em;
 	outline: none;
-	padding: 0.42em 3em 0.5em 2em;
+	padding: 0.5em 3em 0.5em 2em;
 	border-radius: 0.3em;
 	cursor:pointer;
 	outline:none;
@@ -1148,7 +1148,7 @@ a.shipping span{
 	-ms-transition:0.5s all;
 }
 .add-cart-btn input[type="button"]:hover{
-	background: url(../images/cart-icon.png) no-repeat 136px 13.5px #5B5B5B;
+	background: #5B5B5B;
 	text-decoration: none;
 	border: 1px solid #5B5B5B;
 	border-top: 2px solid #5B5B5B;
