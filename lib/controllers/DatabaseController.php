@@ -18,10 +18,15 @@
 class DatabaseController {
     private $_connection;
     private static $_instance; //The single instance
-    private $_host = "localhost";
-    private $_username = "webshop_usr";
-    private $_password = "WGBca4q9GbusLFqF";
-    private $_database = "webshop_db";
+    //private $_host = "localhost";
+    //private $_username = "webshop_usr";
+    //private $_password = "WGBca4q9GbusLFqF";
+    //private $_database = "webshop_db";
+
+    private $_host = "floeggu.ch";
+    private $_username = "floegguc_shop";
+    private $_password = "Au:8fe*9XAu%9f";
+    private $_database = "floegguc_shop";
     private $error = "";
 
     /*
