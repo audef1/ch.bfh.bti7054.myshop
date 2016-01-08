@@ -4,5 +4,25 @@
 
 {% block body %}
 <h1>Welcome to the ProductStock:ProdutStock page</h1>
-
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>{% trans %}ProductNr{% endtrans %}</th>
+            <th>{% trans %}Stock{% endtrans %}</th>
+            <th></th>
+        </tr>
+    {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.stockId }}</td>
+            <td>{{ stock.productNumber }}</td>
+            <td>{{ stock.stock }}</td>
+            <td>
+                <div class="btn-group pull-right" role="group" aria-label="...">
+                    <a class="btn btn-default" href="{{ path('app_productstock_productstockedit', {'id': stock.stockId }) }}" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                    <a class="btn btn-default" href="{{ path('app_productstock_productstockdelete', {'id': stock.stockId }) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
 {% endblock %}
