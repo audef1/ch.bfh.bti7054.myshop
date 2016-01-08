@@ -1,4 +1,8 @@
-admin
+myShop Backendsystem
 =====
 
-A Symfony project created on January 7, 2016, 2:59 pm.
+Backendsystem for myShop!
+
+Please dont forget to initialize the project with: 
+
+php bin/console cache:clear --env=prod --no-debug
