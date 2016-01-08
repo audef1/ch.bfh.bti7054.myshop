@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Order
+ *
+ * @ORM\Table(name="order")
+ * @ORM\Entity
+ */
+class Order
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="customer_id", type="string", length=45, nullable=true)
+     */
+    private $customerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="order_products", type="string", length=45, nullable=true)
+     */
+    private $orderProducts;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="order_date", type="datetime", nullable=false)
+     */
+    private $orderDate = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $orderId;
+
+
+}
+

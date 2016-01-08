@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Customer:Customer{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Customer:Customer page</h1>
+<a class="btn btn-default ws-table-add" href="{{ path('app_customer_customernew') }}" role="button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>{% trans %}Title{% endtrans %}</th>
+            <th>{% trans %}Fistname{% endtrans %}</th>
+            <th>{% trans %}Lastname{% endtrans %}</th>
+            <th>{% trans %}Location{% endtrans %}</th>
+            <th></th>
+        </tr>
+    {% for customer in customers %}
+        <tr>
+            <td>{{ customer.customerId}}</td>
+            <td>{{ customer.customerTitle}}</td>
+            <td>{{ customer.customerFirstname }}</td>
+            <td>{{ customer.customerLastname }}</td>
+            <td>{{ customer.customerLocation }}</td>
+            <td>
+                <div class="btn-group pull-right" role="group" aria-label="...">
+                    <a class="btn btn-default" href="{{ path('app_customer_customeredit', {'id': customer.customerId}) }}" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                    <a class="btn btn-default" href="{{ path('app_customer_customerdelete', {'id': customer.customerId}) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
