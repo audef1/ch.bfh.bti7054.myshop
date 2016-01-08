@@ -120,7 +120,19 @@ class RouteController
                 }
                 else if($this->model->getView($key) === "CartView") {
 
-                    if (isset($_SESSION['cart'])) {
+                    if (!isset($_SESSION['cart'])) {
+                        $cart = new Cart();
+
+                        //test-data
+                        $cart->add(new Product(1));
+                        $cart->add(new Product(2));
+                        $cart->add(new Product(3));
+                        $cart->add(new Product(4));
+                        //$cart->remove(10001);
+
+                        $_SESSION['cart'] = serialize($cart);
+                        $view = new CartView($cart);
+                    } else {
                         $cart = unserialize($_SESSION['cart']);
                         $params = $this->additionalParam;
 
@@ -148,17 +160,17 @@ class RouteController
                         //add
                         if (!empty($action) && $action == "add"){
 
-                                //connect to db and get productid
-                                $db = DatabaseController::getInstance();
-                                $mysqli = $db->getConnection();
-                                $sql_query = "SELECT `product_id` FROM `product` WHERE `product_number` = '" . $productnr . "';";
-                                if ($result = $mysqli->query($sql_query)){
-                                    $product_id = $result->fetch_array();
-                                    $product_id = $product_id['product_id'];
-                                }
-                                else{
-                                    $product_id = 1;
-                                }
+                            //connect to db and get productid
+                            $db = DatabaseController::getInstance();
+                            $mysqli = $db->getConnection();
+                            $sql_query = "SELECT `product_id` FROM `product` WHERE `product_number` = '" . $productnr . "';";
+                            if ($result = $mysqli->query($sql_query)){
+                                $product_id = $result->fetch_array();
+                                $product_id = $product_id['product_id'];
+                            }
+                            else{
+                                $product_id = 1;
+                            }
 
                             $product = new Product($product_id);
                             $product->__set('amount', $amount);
@@ -168,18 +180,7 @@ class RouteController
 
                         $_SESSION['cart'] = serialize($cart);
                         $view = new CartView($cart);
-                    } else {
-                        $cart = new Cart();
 
-                        //test-data
-                        $cart->add(new Product(1));
-                        $cart->add(new Product(2));
-                        $cart->add(new Product(3));
-                        $cart->add(new Product(4));
-                        //$cart->remove(10001);
-
-                        $_SESSION['cart'] = serialize($cart);
-                        $view = new CartView($cart);
                     }
                 }
                 else {

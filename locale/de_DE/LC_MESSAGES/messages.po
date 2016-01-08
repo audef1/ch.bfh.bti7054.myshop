@@ -88,3 +88,75 @@ msgstr "in den Warenkorb"
 #: Single Product quantity
 msgid "Quantity"
 msgstr "Menge"
+
+#: Register Form Title
+msgid "title"
+msgstr "Anrede"
+
+#: Register Form mr
+msgid "mr"
+msgstr "Herr"
+
+#: Register Form mrs
+msgid "mrs"
+msgstr "Frau"
+
+#: Register Form Firstname
+msgid "firstname"
+msgstr "Vorname"
+
+#: Register Form Lastname
+msgid "lastname"
+msgstr "Name"
+
+#: Register Form login
+msgid "loginname"
+msgstr "Login"
+
+#: Register Form password
+msgid "password"
+msgstr "Kennwort"
+
+#: Register Form repeat password
+msgid "repeat password"
+msgstr "Kennwort wiederholen"
+
+#: Register Form email
+msgid "email"
+msgstr "E-Mail"
+
+#: Register Form phone
+msgid "phone"
+msgstr "Telefon"
+
+#: Register Form Address
+msgid "address"
+msgstr "Adresse"
+
+#: Register Form zip
+msgid "zip"
+msgstr "PLZ"
+
+#: Register Form location
+msgid "location"
+msgstr "Ort"
+
+#: Register Form billingaddress
+msgid "billingaddress"
+msgstr "Rechnungsadresse"
+
+#: Register Form shipping
+msgid "shippingaddress"
+msgstr "Lieferadresse"
+
+#: Register Form location
+msgid "isbillingaddress"
+msgstr "Rechnungsadresse entspricht Lieferadresse"
+
+#: Register Form contactinfo
+msgid "contactinformation"
+msgstr "Kontakt-Informationen"
+
+#: Register Form contactinfo
+msgid "logininformation"
+msgstr "Login-Informationen"
