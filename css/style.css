@@ -1132,6 +1132,7 @@ a.shipping span{
 }
 .add-cart-btn input[type="button"]{
 	background: #EF3326;
+	width: 100%;
 	border: 1px solid #B64E30;
 	border-top: 2px solid #B64E30;
 	color: #FFF;
@@ -1147,12 +1148,33 @@ a.shipping span{
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+
+.add-cart-btn input[type="button"].outofstock{
+	background: #5B5B5B;
+	width: 100%;
+	border: 1px solid #5B5B5B;
+	border-top: 2px solid #5B5B5B;
+	color: #FFF;
+	font-size: 1.2em;
+	outline: none;
+	padding: 0.5em 3em 0.5em 2em;
+	border-radius: 0.3em;
+	cursor:pointer;
+	outline:none;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+
 .add-cart-btn input[type="button"]:hover{
 	background: #5B5B5B;
 	text-decoration: none;
 	border: 1px solid #5B5B5B;
 	border-top: 2px solid #5B5B5B;
 }
+
 .product-share li{
 	display:inline-block;
 }
@@ -1500,6 +1522,7 @@ span.mail a:hover{
 	}
 }
 @media (max-width:1024px){
+
 	.container{
 		width:90%;
 	}
@@ -1534,6 +1557,14 @@ span.mail a:hover{
 		font-size: 2em;
 	}
 }
+
+@media (max-width:991px) {
+
+	.add-cart-btn {
+		margin-top: 15px;
+	}
+}
+
 @media (max-width:768px){
 	.container{
 		width:90%;

@@ -12,6 +12,8 @@ class SingleProductView
     private $features;
     private $details;
     private $images;
+    private $options;
+    private $button;
 
     public function __construct(Product $model) {
         $this->model = $model;
@@ -39,6 +41,30 @@ class SingleProductView
         }
         $this->images .= "</ul>";
 
+        //generate options
+        $opts = json_decode($this->model->options);
+        $options = "";
+        foreach ($opts as $key => $value){
+            $options .= "<label class='col-md-2 control-label' for='size-select'>" . _( $key ) . ":</label>
+                                  <div class='col-md-2'>
+                                    <select id='size-select' name='size-select' class='form-control'>";
+
+            foreach ($value as $o){
+                $options .= "<option>" . $o . "</option>";
+            }
+
+            $options .= "</select></div>";
+        }
+
+        $this->options = $options;
+
+        //generate add-to-cart button
+        if ($this->model->__get('stock') == 0){
+            $this->button = "<input type='button' id='addtocart' class='outofstock' value='" . _('out of stock') . "' disabled/>";
+        }
+        else{
+            $this->button = "<input type='button' id='addtocart' value='" . _('Add to cart') . "' />";
+        }
     }
 
     public function render() {
@@ -69,58 +95,60 @@ class SingleProductView
 							<h5>" . $this->model->__get('price2') . " CHF</h5>
 						</div>
 						<div class='product-price-details'>
-							<a class='shipping' href='#'><span></span>" . _('Free shipping') . "</a>
+							<div class='row'>
+						    	<div class='col-md-3'>
+						    	    <p>" . _('stock') . ": " . $this->model->__get('stock') . "</p>
+						    	</div>
+						    	<div class='col-md-9'>
+						    	    <a class='shipping' href='/myshop/". _('shipping') ."'><span></span>" . _('Free shipping') . "</a>
+						    	</div>
+						    </div>
 							<div class='clearfix'> </div>
-							<div class='product-size-qty'>
-								<div class='pro-qty'>
-									<span>" . _('Stock') . ": " . $this->model->__get('stock') . "</span>
+
+						    <div class='row'>
+
+								" . $this->options . "
+
+                                <label class='col-md-2 control-label' for='qty-select'>" . _('amount') . ":</label>
+                                <div class='col-md-2'>
+                                    <select id='qty-select' name='qty-select' class='form-control'>
+                                      <option value='1'>1</option>
+                                      <option value='2'>2</option>
+                                      <option value='3'>3</option>
+                                      <option value='4'>4</option>
+                                      <option value='5'>5</option>
+                                    </select>
+                                </div>
+
+                                <div class='col-md-4 add-cart-btn'>
+								    " . $this->button ."
 								</div>
-								<div class='pro-size'>
-									<span>Size:</span>
-									<select>
-										<option>7</option>
-										<option>8</option>
-										<option>9</option>
-										<option>10</option>
-										<option>11</option>
-									</select>
-								</div>
-								<div class='pro-qty'>
-									<span>" . _('Quantity') . ":</span>
-									<select id='qty'>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</div>
-								<div class='clearfix'> </div>
-							</div>
-							<div class='clearfix'> </div>
-							<div class='product-cart-share'>
-								<div class='message'></div>
-								<div class='add-cart-btn'>
-									<input type='button' id='addtocart' value='" . _('Add to cart') . "' />
 									<script>
                                         $( '#addtocart' ).click(function() {
 
-                                        var qty = $('#qty').find(\":selected\").text();
-                                        carturl = \"/myshop/". _('cart') ."/add/". $this->model->__get('number') ."/\" + qty + \"\";
+                                        var qty = $('#qty-select').find(\":selected\").text();
+                                        var opt = $('#size-select').find(\":selected\").text();
+                                        carturl = \"/myshop/". _('cart') ."/add/". $this->model->__get('number') ."/\" + qty + \"/\" + opt + \"\";
 
-                                        $.ajax({
-                                                method: 'GET',
-                                                url: carturl,
-                                            })
-                                            .done(function( msg ) {
-                                                $('.badge').html(parseInt($('.badge').text()) + 1);
-                                                $('.message').html('Product added to cart');
-                                            });
+                                            if (qty > " . $this->model->__get('stock') . "){
+                                                $('.message').html(\"<div class='alert alert-danger message' role='alert'>". _('not enough stock') ."</div>\");
+                                            }
+                                            else{
+                                                $.ajax({
+                                                    method: 'GET',
+                                                    url: carturl,
+                                                    })
+                                                    .done(function( msg ) {
+                                                        $('.badge').html(parseInt($('.badge').text()) + 1);
+                                                        console.log(carturl);
+                                                        $('.message').html(\"<div class='alert alert-success message' role='alert'>". _('Product added to cart') ."</div>\");
+                                                });
+                                            }
                                         });
 									</script>
 								</div>
-							</div>
 						</div>
+						<div class='message'></div>
 					</div>
 					<div class='clearfix'></div>
 				<!--//product-details--->

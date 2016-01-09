@@ -57,6 +57,26 @@ msgstr "Warenkorb"
 msgid "Your Cart"
 msgstr "Ihr Warenkorb"
 
+#: CartView Cart Empty
+msgid "cart empty"
+msgstr "Ihr Warenkorb ist leer."
+
+#: CartView details
+msgid "details"
+msgstr "Details"
+
+#: CartView details
+msgid "amount"
+msgstr "Menge"
+
+#: CartView details
+msgid "single price"
+msgstr "Strückpreis"
+
+#: CartView details
+msgid "total price"
+msgstr "Total Preis"
+
 #: checkout
 msgid "checkout"
 msgstr "Zur Kasse"
@@ -85,9 +105,29 @@ msgstr "Kostenloser Versand"
 msgid "Add to cart"
 msgstr "in den Warenkorb"
 
+#: Single Product notenoughstock
+msgid "not enough stock"
+msgstr "ACHTUNG: Nicht genügend Artikel an Lager."
+
+#: Single Product versand-link
+msgid "shipping"
+msgstr "versand"
+
 #: Single Product quantity
 msgid "Quantity"
 msgstr "Menge"
+
+#: Single Product options
+msgid "size"
+msgstr "Grösse"
+
+#: Single Product stock
+msgid "stock"
+msgstr "Lager"
+
+#: Single Product out of stock
+msgid "out of stock"
+msgstr "Ausverkauft!"
 
 #: Register Form Title
 msgid "title"
@@ -160,3 +200,15 @@ msgstr "Kontakt-Informationen"
 #: Register Form contactinfo
 msgid "logininformation"
 msgstr "Login-Informationen"
+
+#: Contact Form name
+msgid "name"
+msgstr "Name"
+
+#: Contact Form message
+msgid "message"
+msgstr "Nachricht"
+
+#: Contact Form
+msgid "Contactform"
+msgstr "Kontaktformular"

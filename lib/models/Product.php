@@ -9,6 +9,7 @@
 class Product
 {
     private $id = "";
+    private $uid = "";
     private $number = "10001";
     private $name1 = "Geiler Schuh #1";
     private $name2 = "Ein Muss für jeden Schuh-Fan!";
@@ -25,8 +26,11 @@ class Product
     private $languages = [];
     private $translof = "";
     private $amount = "1";
+    private $options = "";
+    private $selectedoption = "";
 
     public function __construct($id) {
+        $this->uid = md5(uniqid(rand(), true));
         $this->id = $id;
         //connect to db and get product with $id
         $db = DatabaseController::getInstance();
@@ -41,6 +45,7 @@ class Product
         $this->price1 = $res['product_price1'];
         $this->price2 = $res['product_price2'];
         $this->number = $res['product_number'];
+        $this->options = $res['product_options'];
 
         $this->lang = $res['lang'];
         $this->translof = $res['translof'];
@@ -81,5 +86,9 @@ class Product
         }
 
         return $this;
+    }
+
+    public function updateUid(){
+        $this->uid = md5(uniqid(rand(), true));
     }
 }

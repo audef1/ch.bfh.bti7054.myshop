@@ -27,6 +27,11 @@ class RouteController
 
     public function renderView(){
 
+        if (!isset($_SESSION['cart'])) {
+            $cart = new Cart();
+            $_SESSION['cart'] = serialize($cart);
+        }
+
         foreach ($this->model->getUris() as $key => $value) {
 
             if (preg_match("#^$value$#", $this->uriView)){
@@ -120,68 +125,59 @@ class RouteController
                 }
                 else if($this->model->getView($key) === "CartView") {
 
-                    if (!isset($_SESSION['cart'])) {
-                        $cart = new Cart();
+                    $cart = unserialize($_SESSION['cart']);
+                    $params = $this->additionalParam;
 
-                        //test-data
-                        $cart->add(new Product(1));
-                        $cart->add(new Product(2));
-                        $cart->add(new Product(3));
-                        $cart->add(new Product(4));
-                        //$cart->remove(10001);
-
-                        $_SESSION['cart'] = serialize($cart);
-                        $view = new CartView($cart);
-                    } else {
-                        $cart = unserialize($_SESSION['cart']);
-                        $params = $this->additionalParam;
-
-                        // set variables
-                        if (isset($params[2])){
-                            $action = $params[2];
-                        }
-                        if (isset($params[3])){
-                            $productnr = $params[3];
-                        }
-                        if (isset($params[4])){
-                            $amount = $params[4];
-                        }
-
-                        //update
-                        if (!empty($action) && $action == "update" && !empty($productnr) && !empty($amount)){
-                            $cart->update($productnr, $amount);
-                        }
-
-                        //delete
-                        if (!empty($action) && $action == "delete" && !empty($productnr)){
-                            $cart->remove($productnr);
-                        }
-
-                        //add
-                        if (!empty($action) && $action == "add"){
-
-                            //connect to db and get productid
-                            $db = DatabaseController::getInstance();
-                            $mysqli = $db->getConnection();
-                            $sql_query = "SELECT `product_id` FROM `product` WHERE `product_number` = '" . $productnr . "';";
-                            if ($result = $mysqli->query($sql_query)){
-                                $product_id = $result->fetch_array();
-                                $product_id = $product_id['product_id'];
-                            }
-                            else{
-                                $product_id = 1;
-                            }
-
-                            $product = new Product($product_id);
-                            $product->__set('amount', $amount);
-
-                            $cart->add($product);
-                        }
-
-                        $_SESSION['cart'] = serialize($cart);
-                        $view = new CartView($cart);
-
+                    // set variables
+                    if (isset($params[2])){
+                        $action = $params[2];
                     }
+                    if (isset($params[3])){
+                        $productnr = $params[3];
+                        $uid = $params[3];
+                    }
+                    if (isset($params[4])){
+                        $amount = $params[4];
+                    }
+                    if (isset($params[5])){
+                        $option = $params[5];
+                    }
+
+                    //update
+                    if (!empty($action) && $action == "update" && !empty($uid) && !empty($amount)){
+                        $cart->update($uid, $amount);
+                    }
+
+                    //delete
+                    if (!empty($action) && $action == "delete" && !empty($uid)){
+                        $cart->remove($uid);
+                    }
+
+                    //add
+                    if (!empty($action) && $action == "add"){
+
+                        //connect to db and get productid
+                        $db = DatabaseController::getInstance();
+                        $mysqli = $db->getConnection();
+                        $sql_query = "SELECT `product_id` FROM `product` WHERE `product_number` = '" . $productnr . "';";
+                        if ($result = $mysqli->query($sql_query)){
+                            $product_id = $result->fetch_array();
+                            $product_id = $product_id['product_id'];
+                        }
+                        else{
+                            $product_id = 1;
+                        }
+
+                        //create new product for cart and update its values according selection
+                        $newproduct = new Product($product_id);
+                        $newproduct->__set('selectedoption', $option);
+                        $newproduct->updateUid();
+                        $newproduct->__set('amount', $amount);
+                        $cart->add($newproduct);
+                    }
+
+                    $_SESSION['cart'] = serialize($cart);
+                    $view = new CartView($cart);
                 }
                 else {
                     $useView = $this->model->getView($key);
