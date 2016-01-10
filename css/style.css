@@ -1175,6 +1175,18 @@ a.shipping span{
 	border-top: 2px solid #5B5B5B;
 }
 
+img.cartthumb {
+	height: 50px;
+	float: left;
+	margin-right: 10px;
+}
+
+a.cartproductlink {
+	color: black;
+	text-decoration: none;
+}
+
+
 .product-share li{
 	display:inline-block;
 }

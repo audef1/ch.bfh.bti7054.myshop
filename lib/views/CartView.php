@@ -33,9 +33,10 @@ class CartView
         $products = "";
 
         foreach ($this->model->getProducts() as $product){
+            $images = json_decode($product->__get('images'), true);
             $products .= "<tr>
                             <td>
-                                <b>" . $product->__get('name1') . "</b><br />" . _('size') . ": " . $product->__get('selectedoption') ."
+                                <a href='/myshop/" . _('product') . "/" . $product->__get('nicename') . "'><img src='/myshop/images/products/". $images['thumb'] ."' class='cartthumb' height='60px'/></a><a href='/myshop/" . _('product') . "/" . $product->__get('nicename') . "' class='cartproductlink'><b>" . $product->__get('name1') . "</b></a><br />" . _('size') . ": " . $product->__get('selectedoption') ."
                             </td>
                             <td>
                                 <input type='number' id='". $product->__get('number') ."' min='0' value='" . $product->__get('amount') . "' disabled>

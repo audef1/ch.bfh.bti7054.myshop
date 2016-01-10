@@ -33,7 +33,9 @@ class SingleProductView
 
         //generate imagelist
         $this->images = "<ul id='etalage'>";
-        foreach ($this->model->__get('images') as $image){
+        $images = json_decode($this->model->__get('images'), true);
+
+        foreach ($images['images'] as $image){
             $this->images .=   "<li>
                                     <img class='etalage_thumb_image' src='/myshop/images/products/". $image ."_thumb.jpg' />
                                     <img class='etalage_source_image' src='/myshop/images/products/". $image ."_large.jpg' />
