@@ -10,8 +10,39 @@ class LoginController
 {
     private $view;
 
-    public function __construct(LoginView $view){
-        $this->view = $view;
+    public function __construct($parameter){
+
+        if (isset($_SESSION['user'])) {
+
+            //logout if logout link is called
+            if ($parameter[1] == "logout"){
+                $this->view = new LoginView();
+                $this->logout();
+            }
+            else{
+                $this->view = new CustomerView(unserialize($_SESSION['user']));
+            }
+        }
+        else
+        {
+            if(isset($_POST["login"]) && isset($_POST["password"])) {
+                $username = $_POST["login"];
+                $password = $_POST["password"];
+
+                $this->view = new LoginView();
+
+                //authenticate
+                if ($this->login($username,$password)){
+                    $this->view = new CustomerView(unserialize($_SESSION['user']));
+                }
+            }else{
+                $this->view = new LoginView();
+            }
+        }
+    }
+
+    public function renderView(){
+        $this->view->render();
     }
 
     public function login($username, $password){

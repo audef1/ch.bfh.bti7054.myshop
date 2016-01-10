@@ -109,6 +109,10 @@ msgstr "in den Warenkorb"
 msgid "not enough stock"
 msgstr "ACHTUNG: Nicht genügend Artikel an Lager."
 
+#: Single Product addedtocart
+msgid "added to cart"
+msgstr "Produkt wurde dem Warenkorb hinzugefügt."
+
 #: Single Product versand-link
 msgid "shipping"
 msgstr "versand"

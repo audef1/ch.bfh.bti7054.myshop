@@ -143,7 +143,7 @@ class SingleProductView
                                                     .done(function( msg ) {
                                                         $('.badge').html(parseInt($('.badge').text()) + 1);
                                                         console.log(carturl);
-                                                        $('.message').html(\"<div class='alert alert-success message' role='alert'>". _('Product added to cart') ."</div>\");
+                                                        $('.message').html(\"<div class='alert alert-success message' role='alert'>". _('added to cart') ."</div>\");
                                                 });
                                             }
                                         });
