@@ -31,7 +31,7 @@ class Salts
      *
      * @ORM\Column(name="salt_id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $saltId;
 

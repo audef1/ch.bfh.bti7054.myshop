@@ -97,11 +97,18 @@ class Product
     private $productOptions;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="product_brand", type="string", length=45, nullable=false)
+     */
+    private $productBrand;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="hidden", type="boolean", nullable=false)
      */
-    private $hidden = false;
+    private $hidden;
 
     /**
      * @var integer
@@ -122,7 +129,7 @@ class Product
      *
      * @ORM\Column(name="product_id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $productId;
 
@@ -414,6 +421,30 @@ class Product
     public function getProductOptions()
     {
         return $this->productOptions;
+    }
+
+    /**
+     * Set productBrand
+     *
+     * @param string $productBrand
+     *
+     * @return Product
+     */
+    public function setProductBrand($productBrand)
+    {
+        $this->productBrand = $productBrand;
+
+        return $this;
+    }
+
+    /**
+     * Get productBrand
+     *
+     * @return string
+     */
+    public function getProductBrand()
+    {
+        return $this->productBrand;
     }
 
     /**

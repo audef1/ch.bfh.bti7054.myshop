@@ -49,7 +49,7 @@ class ProductOrder
      *
      * @param string $customerId
      *
-     * @return Order
+     * @return ProductOrder
      */
     public function setCustomerId($customerId)
     {
@@ -73,7 +73,7 @@ class ProductOrder
      *
      * @param string $orderProducts
      *
-     * @return Order
+     * @return ProductOrder
      */
     public function setOrderProducts($orderProducts)
     {
@@ -97,7 +97,7 @@ class ProductOrder
      *
      * @param \DateTime $orderDate
      *
-     * @return Order
+     * @return ProductOrder
      */
     public function setOrderDate($orderDate)
     {

@@ -31,7 +31,7 @@ class ProductStock
      *
      * @ORM\Column(name="stock_id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $stockId;
 

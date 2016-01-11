@@ -1,0 +1,40 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductBrand
+ *
+ * @ORM\Table(name="product_brand")
+ * @ORM\Entity
+ */
+class ProductBrand
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brand_name", type="string", length=45, nullable=false)
+     */
+    private $brandName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brand_nicename", type="string", length=45, nullable=false)
+     */
+    private $brandNicename;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="brand_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $brandId;
+
+
+}
+
