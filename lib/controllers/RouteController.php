@@ -64,6 +64,10 @@ class RouteController
                     $contactcontroller = new ContactController($this->additionalParam);
                     $contactcontroller->renderView();
                 }
+                else if($this->model->getView($key) === "RegisterView") {
+                    $registrationcontroller = new RegistrationController($this->additionalParam);
+                    $registrationcontroller->renderView();
+                }
                 else {
                     $useView = $this->model->getView($key);
                     $view = new $useView();
