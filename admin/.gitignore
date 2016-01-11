@@ -1,4 +1,6 @@
-/var/logs/
+/var/logs/dev.log
+/var/logs/prod.log
+/var/logs/*
 /var/cache/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
