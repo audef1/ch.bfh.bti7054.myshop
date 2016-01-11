@@ -4,7 +4,41 @@
 
 {% block body %}
 <h1>Page Overview</h1>
-<a class="btn btn-default ws-table-add" href="{{ path('app_pages_pagenew') }}" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('app_pages_pagenew') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <form class="navbar-form navbar-left" action="{{ path('app_pages_pagescopy') }}" method="post" role="copy">
+                    <div class="form-group">
+                        <input name="pageId" type="text" class="form-control" required="yes" placeholder="Page ID">
+                    </div>
+                    <button type="submit" class="btn btn-default">Copy</button>
+                </form>
+
+                <form class="navbar-form navbar-left" action="{{ path('app_pages_pagestranslate') }}" method="post" role="translate">
+                    <div class="form-group">
+                        <input name="pageId" type="text" class="form-control" required="yes" placeholder="Page ID">
+                    </div>
+                    <button type="submit" class="btn btn-default">Translate</button>
+                </form>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
     <table class="table table-striped">
         <tr>
             <th>#</th>
