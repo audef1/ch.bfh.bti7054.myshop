@@ -43,5 +43,86 @@ class ProductOrder
     private $orderId;
 
 
-}
 
+    /**
+     * Set customerId
+     *
+     * @param string $customerId
+     *
+     * @return ProductOrder
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
+
+        return $this;
+    }
+
+    /**
+     * Get customerId
+     *
+     * @return string
+     */
+    public function getCustomerId()
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * Set orderProducts
+     *
+     * @param string $orderProducts
+     *
+     * @return ProductOrder
+     */
+    public function setOrderProducts($orderProducts)
+    {
+        $this->orderProducts = $orderProducts;
+
+        return $this;
+    }
+
+    /**
+     * Get orderProducts
+     *
+     * @return string
+     */
+    public function getOrderProducts()
+    {
+        return $this->orderProducts;
+    }
+
+    /**
+     * Set orderDate
+     *
+     * @param \DateTime $orderDate
+     *
+     * @return ProductOrder
+     */
+    public function setOrderDate($orderDate)
+    {
+        $this->orderDate = $orderDate;
+
+        return $this;
+    }
+
+    /**
+     * Get orderDate
+     *
+     * @return \DateTime
+     */
+    public function getOrderDate()
+    {
+        return $this->orderDate;
+    }
+
+    /**
+     * Get orderId
+     *
+     * @return integer
+     */
+    public function getOrderId()
+    {
+        return $this->orderId;
+    }
+}

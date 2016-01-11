@@ -36,5 +36,62 @@ class ProductStock
     private $stockId;
 
 
-}
 
+    /**
+     * Set productNumber
+     *
+     * @param integer $productNumber
+     *
+     * @return ProductStock
+     */
+    public function setProductNumber($productNumber)
+    {
+        $this->productNumber = $productNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get productNumber
+     *
+     * @return integer
+     */
+    public function getProductNumber()
+    {
+        return $this->productNumber;
+    }
+
+    /**
+     * Set stock
+     *
+     * @param integer $stock
+     *
+     * @return ProductStock
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Get stock
+     *
+     * @return integer
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * Get stockId
+     *
+     * @return integer
+     */
+    public function getStockId()
+    {
+        return $this->stockId;
+    }
+}

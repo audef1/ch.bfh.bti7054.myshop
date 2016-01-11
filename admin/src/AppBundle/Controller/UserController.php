@@ -2,8 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
@@ -23,20 +26,25 @@ class UserController extends Controller
     /**
      * @Route("/UserNew")
      */
-    public function UserNewAction()
+    public function UserNewAction(Request $request)
     {
-        $user = new Category();
-        $form = $this->createForm(CategoryType::class, $user);
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isValid() && $form->isSubmitted()) {
             $user = $form->getData();
             $em = $this->getDoctrine()->getManager();
+            
+            $password = $this->get('security.password_encoder')
+                ->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('app_category_category');
+            return $this->redirectToRoute('app_user_user');
         }
         
         return $this->render('AppBundle:User:user_new.html.twig', array(
@@ -45,23 +53,50 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/UserEdit")
+     * @Route("/UserEdit/{id}")
      */
-    public function UserEditAction()
+    public function UserEditAction(Request $request, $id)
     {
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        $user = $repository->find($id);
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()) {
+            $user = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            
+            
+            $password = $this->get('security.password_encoder')
+                ->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('app_user_user');
+        }
+        
         return $this->render('AppBundle:User:user_edit.html.twig', array(
-            // ...
+             'form' => $form->createView()
         ));
     }
 
     /**
-     * @Route("/UserDelete")
+     * @Route("/UserDelete/{id}")
      */
-    public function UserDeleteAction()
+    public function UserDeleteAction(Request $request, $id)
     {
-        return $this->render('AppBundle:User:user_delete.html.twig', array(
-            // ...
-        ));
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        $user = $repository->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirectToRoute('app_user_user');
     }
 
 }

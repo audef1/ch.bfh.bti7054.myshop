@@ -36,5 +36,62 @@ class Salts
     private $saltId;
 
 
-}
 
+    /**
+     * Set customerId
+     *
+     * @param integer $customerId
+     *
+     * @return Salts
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
+
+        return $this;
+    }
+
+    /**
+     * Get customerId
+     *
+     * @return integer
+     */
+    public function getCustomerId()
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     *
+     * @return Salts
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Get saltId
+     *
+     * @return integer
+     */
+    public function getSaltId()
+    {
+        return $this->saltId;
+    }
+}

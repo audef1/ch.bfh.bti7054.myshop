@@ -8,10 +8,9 @@
 
 namespace AppBundle\Repository;
 
-use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 class UserRepository extends EntityRepository implements UserLoaderInterface
 {
