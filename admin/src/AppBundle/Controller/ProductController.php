@@ -46,6 +46,67 @@ class ProductController extends Controller {
     }
 
     /**
+     * @Route("/ProductTranslate")
+     */
+    public function ProductTranslateAction(Request $request) {
+        $product = new Product();
+
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+
+        if ($request->request->get("productId", null) !== null) {
+            $product = clone $repository->find($request->request->get("productId"));
+            $product->setTranslof($request->request->get("productId"));
+        }
+
+        $form = $this->createForm(ProductType::class, $product);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()) {
+            $product = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            return $this->redirectToRoute('app_product_product');
+        }
+
+        return $this->render('AppBundle:Product:product_new.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/ProductCopy")
+     */
+    public function ProductCopyAction(Request $request) {
+        $product = new Product();
+        
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        
+        if ($request->request->get("productId", null) !== null) {
+            $product = clone $repository->find($request->request->get("productId"));
+        }
+
+        $form = $this->createForm(ProductType::class, $product);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted()) {
+            $product = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($product);
+            $em->flush();
+
+            return $this->redirectToRoute('app_product_product');
+        }
+
+        return $this->render('AppBundle:Product:product_new.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+
+    /**
      * @Route("/ProductEdit/{id}")
      */
     public function ProductEditAction(Request $request, $id) {

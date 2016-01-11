@@ -21,6 +21,7 @@ class SingleProductController
             $db = DatabaseController::getInstance();
             $mysqli = $db->getConnection();
             $sql_query = "SELECT `product_id` FROM `product` WHERE `product_nicename` = '" . $parameter[2] . "' AND `hidden` != 1;";
+            
             if ($result = $mysqli->query($sql_query)){
                 $product_id = $result->fetch_array();
                 $product_id = $product_id['product_id'];

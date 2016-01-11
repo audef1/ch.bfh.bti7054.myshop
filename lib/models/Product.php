@@ -38,8 +38,10 @@ class Product
         $db = DatabaseController::getInstance();
         $mysqli = $db->getConnection();
         $sql_query = "SELECT * FROM product WHERE product_id = '" . $id . "' AND hidden != 1;";
+
         $result = $mysqli->query($sql_query);
         $res = $result->fetch_array();
+        
         
         $this->name1 = $res['product_name1'];
         $this->name2 = $res['product_name2'];
@@ -60,6 +62,8 @@ class Product
 
         //get brand
         $sql_query = "SELECT brand_nicename, brand_name FROM product_brand WHERE brand_id = " . $this->brand . ";";
+        
+        
         $result = $mysqli->query($sql_query);
         $res = $result->fetch_array();
 

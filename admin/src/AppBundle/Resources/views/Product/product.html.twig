@@ -3,9 +3,42 @@
 {% block title %}AppBundle:Product:Product{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Product:Product page</h1>
+    <h1>Welcome to the Product:Product page</h1>
 
-<a class="btn btn-default ws-table-add" href="{{ path('app_product_productnew') }}" role="button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('app_product_productnew') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <form class="navbar-form navbar-left" action="{{ path('app_product_productcopy') }}" method="post" role="copy">
+                    <div class="form-group">
+                        <input name="productId" type="text" class="form-control" required="yes" placeholder="Product ID">
+                    </div>
+                    <button type="submit" class="btn btn-default">Copy</button>
+                </form>
+
+                <form class="navbar-form navbar-left" action="{{ path('app_product_producttranslate') }}" method="post" role="translate">
+                    <div class="form-group">
+                        <input name="productId" type="text" class="form-control" required="yes" placeholder="Product ID">
+                    </div>
+                    <button type="submit" class="btn btn-default">Translate</button>
+                </form>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
     <table class="table table-striped">
         <tr>
             <th>#</th>
@@ -13,18 +46,19 @@
             <th>{% trans %}Product Name{% endtrans %}</th>
             <th></th>
         </tr>
-    {% for product in products %}
-        <tr>
-            <td>{{ product.productId}}</td>
-            <td>{{ product.productNumber }}</td>
-            <td>{{ product.productName1 }}</td>
-            <td>
-                <div class="btn-group pull-right" role="group" aria-label="...">
-                    <a class="btn btn-default" href="{{ path('app_product_productedit', {'id': product.productId}) }}" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                    <a class="btn btn-default" href="{{ path('app_product_productdelete', {'id': product.productId}) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                </div>
-            </td>
-        </tr>
-    {% endfor %}
+        {% for product in products %}
+            <tr>
+                <td>{{ product.productId}}</td>
+                <td>{{ product.productNumber }}</td>
+                <td>{{ product.productName1 }}</td>
+                <td>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <a class="btn btn-default" href="{{ path('app_product_productedit', {'id': product.productId}) }}" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                        <a class="btn btn-default" href="{{ path('app_product_productdelete', {'id': product.productId}) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
     </table>
+
 {% endblock %}
