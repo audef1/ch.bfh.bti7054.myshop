@@ -69,8 +69,6 @@ class HomeView
 
         echo "</div>";
 
-        $header->update();
-
         $footer = new FooterView();
         $footer->render();
     }
