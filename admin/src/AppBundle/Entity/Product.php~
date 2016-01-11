@@ -528,4 +528,6 @@ class Product
     {
         return $this->productId;
     }
+    
+    
 }

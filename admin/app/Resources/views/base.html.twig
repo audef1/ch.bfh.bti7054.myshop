@@ -28,12 +28,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">WebShop</a>
+                    <a class="navbar-brand" href="{{ path('app_admin_admin') }}">WebShop</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 
-                        <li><a href="{{ path('app_admin_admin') }}">{% trans %}Admin{% endtrans %}</a></li>
+                        {#<li><a href="{{ path('app_admin_admin') }}">{% trans %}Admin{% endtrans %}</a></li>#}
                         <li><a href="{{ path('app_category_category') }}">{% trans %}Categories{% endtrans %}</a></li>
                         <li><a href="{{ path('app_customer_customer') }}">{% trans %}Customers{% endtrans %}</a></li>
                         <li><a href="{{ path('app_order_order') }}">{% trans %}Orders{% endtrans %}</a></li>
@@ -41,24 +41,25 @@
                         <li><a href="{{ path('app_product_product') }}">{% trans %}Products{% endtrans %}</a></li>
                         <li><a href="{{ path('app_productstock_produtstock') }}">{% trans %}Product Stock{% endtrans %}</a></li>
                         <li><a href="{{ path('app_brand_brand') }}">{% trans %}Product Brand{% endtrans %}</a></li>
+                        <li><a href="{{ path('app_user_user') }}">{% trans %}Admin Users{% endtrans %}</a></li>
+
+
+
+
+
+
 
 
                     </ul>
-                        {#
-                    <div id="navbar" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li role="presentation" class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.request.locale }}<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ path('app_category_category') }}">Dashboard</a></li>
-                                    <li><a href="{{ path('app_category_categorynew') }}">Dashboard</a></li>
-                                </ul>
-                            </li>
+                
 
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                    #}
+                <div id="navbar-left" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('logout') }}">{% trans %}Logged in as,{% endtrans %} {{ app.user.username }}</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
                 </div>
+            </div>
         </nav>
 
         <div class="container">
