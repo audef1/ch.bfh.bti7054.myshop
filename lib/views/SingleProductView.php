@@ -18,18 +18,27 @@ class SingleProductView
     public function __construct(Product $model) {
         $this->model = $model;
 
+        /* Feautures als ganzes.
         //generate featurelist
         $this->features = "<ul>";
         foreach ($this->model->__get('features') as $feature){
             $this->features .= "<li>" . $feature . "</li>";
         }
         $this->features .= "</ul>";
+        */
+        
+        $this->features = $this->model->__get('features');
 
         //generate detaillist
         $this->details = "";
+        /* Details nicht als einzelnes <li> sondern als Plaintext
         foreach ($this->model->__get('details') as $detail){
             $this->details .= "<p>" . $detail . "</p>";
         }
+        */
+        
+        $this->details = $this->model->__get('details');
+        
 
         //generate imagelist
         $this->images = "<ul id='etalage'>";

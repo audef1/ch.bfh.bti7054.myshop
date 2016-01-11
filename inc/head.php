@@ -18,6 +18,7 @@
 <title>myWebshop | Home</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
 <!-- Styles -->
 <link href="/myshop/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="/myshop/css/style.css" rel='stylesheet' type='text/css' />

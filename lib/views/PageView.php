@@ -20,7 +20,7 @@ class PageView
                     <div class='p-content'>
                         <div class='p-content-header'>
                             <div class='p-content-header-left'>
-                                <h1>" . utf8_encode($this->model->title) . "</h1>
+                                <h1>" . $this->model->title . "</h1>
                             </div>
                             <div class='p-content-header-right'>
 

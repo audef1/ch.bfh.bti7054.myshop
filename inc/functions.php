@@ -30,7 +30,7 @@ function get_top_menu() {
     $result = $mysqli->query($sql_query) or trigger_error($mysqli->error."[$sql_query]");
 
     while ($row = $result->fetch_row()) {
-        $pages[] = array(utf8_encode($row[1]), "/myshop/" . $row[0]);
+        $pages[] = array(($row[1]), "/myshop/" . $row[0]);
     }
 
         //add contact page to menu
@@ -73,7 +73,7 @@ function get_bottom_menu() {
     $result = $mysqli->query($sql_query) or trigger_error($mysqli->error."[$sql_query]");
 
     while ($row = $result->fetch_row()) {
-        $pages[] = array(utf8_encode($row[1]), "/myshop/" . $row[0]);
+        $pages[] = array(($row[1]), "/myshop/" . $row[0]);
     }
 
         //add contact page to menu
