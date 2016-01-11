@@ -10,6 +10,7 @@ class SingleProductController
 {
 
     private $view;
+    private $model;
 
     public function __construct($parameter)
     {
@@ -34,12 +35,20 @@ class SingleProductController
         $product = new Product($product_id);
         $this->view = new SingleProductView($product);
 
+        $this->model = $product;
+
         $langselect = new LanguageView($product);
         $langselect->render();
     }
 
     public function renderView(){
+        $header = new HeaderView($this->model);
+        $header->render();
+
         $this->view->render();
+
+        $footer = new FooterView();
+        $footer->render();
     }
 
 }

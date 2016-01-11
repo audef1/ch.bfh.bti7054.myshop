@@ -6,18 +6,13 @@
  * Date: 10.01.16
  * Time: 16:27
  */
-class CustomerController
+class ContactController
 {
     private $view;
 
     public function __construct()
     {
-        if (isset($_SESSION['user'])) {
-            $this->view = new CustomerView(unserialize($_SESSION['user']));
-        }
-        else{
-            $this->view = new LoginView();
-        }
+        $this->view = new ContactView();
     }
 
     public function renderView(){

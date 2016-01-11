@@ -11,8 +11,13 @@ class HeaderView
 
     private $login;
     private $cart;
+    private $model;
 
-    public function __construct() {
+    public function __construct($model = NULL) {
+
+        if ($model){
+            $this->model = $model;
+        }
 
         if (!isset($_SESSION['user'])) {
             $this->login = "<li class='login'><a class='login' href='/myshop/login'>" . _('Login') . "</a></li>
@@ -27,25 +32,6 @@ class HeaderView
                             <div class='clearfix'> </div>";
         }
 
-    }
-
-    public function update(){
-
-        //update the loginlink
-        $this->login = "";
-        if (!isset($_SESSION['user'])) {
-            $this->login = "<li class='login'><a class='login' href='/myshop/login'>" . _('Login') . "</a></li><li><a class='rigister' href='/myshop/register'>" . _('Register') . "<span></span></a></li><div class='clearfix'> </div>";
-        }
-        else {
-            $user = unserialize($_SESSION['user']);
-            $this->login =  "";
-            $this->login = "<li class='login'><a class='login' href='/myshop/myaccount'>" . $user->__get('firstname') . "</a></li><li><a class='rigister' href='/myshop/logout'>" . _('Logout') . "<span></span></a></li><div class='clearfix'> </div>";
-        }
-        echo "<script>$(function() { $('.loginregister').html(\"$this->login\"); }); </script>";
-
-        //update the languageselection (evtl)
-        //update the menu
-
         //update cart count
         if (!isset($_SESSION['cart'])) {
             $this->cart = "<i class='fa fa-shopping-cart'></i><a href='" . _('cart') . "'>". _('Cart') ."</a>";
@@ -55,21 +41,10 @@ class HeaderView
             $this->cart =  "";
             $this->cart = "<i class='fa fa-shopping-cart'></i><a href='/myshop/" . _('cart') . "'>". _('Cart') ."<span class='badge'>". $cart->count() ."</span></a>";
         }
-        echo "<script>$(function() { $('.add-to-cart ul').html(\"$this->cart\"); }); </script>";
 
     }
 
     public function render(){
-
-        $loginlink = "";
-        if (!isset($_SESSION['user'])) {
-            $loginlink = "<a class='login' href='/myshop/login'>" . _('Login') . "</a>";
-        }
-        else {
-            $user = unserialize($_SESSION['user']);
-            $loginlink =  "<a class='login' href='/myshop/logout'>" . $user->__get('username') . " <span>(". _('Logout') . ")</span></a>";
-        }
-
         echo "
                 <div class='container'>
                     <div class='top-header'>

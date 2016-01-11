@@ -14,6 +14,10 @@ class HomeView
     }
 
     public function render(){
+
+        $header = new HeaderView();
+        $header->render();
+
         echo "  <div  id='top' class='callbacks_container'>
 
                 <!--- slider --->
@@ -64,5 +68,10 @@ class HomeView
         $productsview->render();
 
         echo "</div>";
+
+        $header->update();
+
+        $footer = new FooterView();
+        $footer->render();
     }
 }

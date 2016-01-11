@@ -9,6 +9,7 @@
 class LoginController
 {
     private $view;
+    private $model;
 
     public function __construct($parameter){
 
@@ -42,7 +43,13 @@ class LoginController
     }
 
     public function renderView(){
+        $header = new HeaderView();
+        $header->render();
+
         $this->view->render();
+
+        $footer = new FooterView();
+        $footer->render();
     }
 
     public function login($username, $password){

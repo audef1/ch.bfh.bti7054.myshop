@@ -60,6 +60,10 @@ class RouteController
                     $cartcontroller = new CartController($this->additionalParam);
                     $cartcontroller->renderView();
                 }
+                else if($this->model->getView($key) === "ContactView") {
+                    $contactcontroller = new ContactController($this->additionalParam);
+                    $contactcontroller->renderView();
+                }
                 else {
                     $useView = $this->model->getView($key);
                     $view = new $useView();

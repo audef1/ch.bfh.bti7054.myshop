@@ -68,7 +68,13 @@ class CartController
     }
 
     public function renderView(){
+        $header = new HeaderView();
+        $header->render();
+
         $this->view->render();
+
+        $footer = new FooterView();
+        $footer->render();
     }
 
 

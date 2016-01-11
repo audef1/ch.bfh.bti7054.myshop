@@ -9,6 +9,7 @@
 class PageController
 {
     private $view;
+    private $model;
 
     public function __construct($parameter)
     {
@@ -26,13 +27,21 @@ class PageController
 
         $page = new Page($page_id);
         $this->view = new PageView($page);
+        $this->model = $page;
 
         $langselect = new LanguageView($page);
         $langselect->render();
     }
 
     public function renderView(){
+
+        $header = new HeaderView($this->model);
+        $header->render();
+
         $this->view->render();
+
+        $footer = new FooterView();
+        $footer->render();
     }
 
 }

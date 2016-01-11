@@ -14,27 +14,10 @@ session_start();
         <?php require_once("inc/head.php"); ?>
     </head>
     <body>
-        <!--- menu and header --->
-        <?php
-            $header = new HeaderView();
-            $header->render();
-        ?>
-        <!--- end menu and header --->
-
         <!--- content --->
         <?php
             $routecontroller->renderView();
-
-            //update headerinfo (buttons)
-            $header->update();
         ?>
         <!--- end content --->
-
-        <!--- footer --->
-        <?php
-            $footer = new FooterView();
-            $footer->render();
-        ?>
-        <!--- end footer --->
     </body>
 </html>

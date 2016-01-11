@@ -35,11 +35,25 @@ msgid "en_EN"
 msgstr "English"
 
 
-#: 
+#: product
 msgid "Product"
-msgid_plural "Products"
-msgstr[0] "Produkt"
-msgstr[1] "Produkte"
+msgstr "Produkt"
+
+#: product
+msgid "Products"
+msgstr "Produkte"
+
+#: product link
+msgid "products"
+msgstr "produkte"
+
+#: contact
+msgid "Contact"
+msgstr "Kontakt"
+
+#: contact link
+msgid "contact"
+msgstr "kontakt"
 
 #: cart link
 msgid "cart"
@@ -216,3 +230,7 @@ msgstr "Nachricht"
 #: Contact Form
 msgid "Contactform"
 msgstr "Kontaktformular"
+
+#: submit
+msgid "submit"
+msgstr "Senden"
