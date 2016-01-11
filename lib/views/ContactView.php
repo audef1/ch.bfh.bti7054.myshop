@@ -27,22 +27,43 @@ class ContactView
                             <div class='clearfix'> </div>
                         </div>
 
-                        <form method='post' action='contactform.php'>
-                            <p>
-                                <label for='name'>Name:</label>
-                                <input type='text' name='name' id='name' />
-                            </p>
-                            <p>
-                                <label for='email'>E-Mail:</label>
-                                <input type='text' name='email' id='email' />
-                            </p>
-                            <p>
-                                <label for='message'>Message:</label><br />
-                                <textarea name='message' rows='5' id='message'></textarea>
-                            </p>
-                            <p>
-                                <input type='submit' name='submit' value='Submit' class='submit-button' />
-                            </p>
+                        <form class='form-horizontal'>
+                            <fieldset>
+                            <!-- Text input-->
+                            <div class='form-group'>
+                              <label class='col-md-4 control-label' for='name'>" . _('name') . "</label>
+                              <div class='col-md-4'>
+                              <input id='name' name='name' type='text' placeholder='' class='form-control input-md' required=''>
+
+                              </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class='form-group'>
+                              <label class='col-md-4 control-label' for='email'>" . _('email') . "</label>
+                              <div class='col-md-4'>
+                              <input id='email' name='email' type='text' placeholder='' class='form-control input-md' required=''>
+
+                              </div>
+                            </div>
+
+                            <!-- Textarea -->
+                            <div class='form-group'>
+                              <label class='col-md-4 control-label' for='message'>" . _('message') . "</label>
+                              <div class='col-md-4'>
+                                <textarea class='form-control' id='message' name='message' rows='4'></textarea>
+                              </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class='form-group'>
+                              <label class='col-md-4 control-label' for='submit'></label>
+                              <div class='col-md-4'>
+                                <button id='submit' name='submit' class='btn btn-default'>" . _('submit') . "</button>
+                              </div>
+                            </div>
+
+                            </fieldset>
                         </form>
                     </div>
                 </div>

@@ -33,36 +33,38 @@ class CartView
         $products = "";
 
         foreach ($this->model->getProducts() as $product){
+            $images = json_decode($product->__get('images'), true);
             $products .= "<tr>
                             <td>
-                                <b>" . $product->__get('name1') . "</b>
+                                <a href='/myshop/" . _('product') . "/" . $product->__get('nicename') . "'><img src='/myshop/images/products/". $images['thumb'] ."' class='cartthumb' height='60px'/></a><a href='/myshop/" . _('product') . "/" . $product->__get('nicename') . "' class='cartproductlink'><b>" . $product->__get('name1') . "</b></a><br />" . _('size') . ": " . $product->__get('selectedoption') ."
                             </td>
                             <td>
                                 <input type='number' id='". $product->__get('number') ."' min='0' value='" . $product->__get('amount') . "' disabled>
-                                <a href='/myshop/". _('cart') ."/update/". $product->__get('number')."/" . ($product->__get('amount') + 1) . "'><i class='fa fa-plus-square'></i></a>
-                                <a href='/myshop/". _('cart') ."/update/". $product->__get('number')."/" . ($product->__get('amount') - 1) . "'><i class='fa fa-minus-square'></i></a>
+                                <a href='/myshop/". _('cart') ."/update/". $product->__get('uid')."/" . ($product->__get('amount') + 1) . "'><i class='fa fa-plus-square'></i></a>
+                                <a href='/myshop/". _('cart') ."/update/". $product->__get('uid')."/" . ($product->__get('amount') - 1) . "'><i class='fa fa-minus-square'></i></a>
                             </td>
                             <td>" . number_format($product->__get('price2'), 2) . "</td>
                             <td>" . number_format($product->__get('price2') * $product->__get('amount'), 2) . "</td>
                             <td>
-                                <a href='/myshop/". _('cart') ."/delete/". $product->__get('number') . "'><i class='fa fa-trash'></i></a>
+                                <a href='/myshop/". _('cart') ."/delete/". $product->__get('uid') . "'><i class='fa fa-trash'></i></a>
                             </td>
                            </tr>";
         }
 
         if ($products == ""){
-            echo _('Your Cart is empty.');
+            echo _('cart empty');
         }
         else{
+
             echo "<form id='cartform' action='". _('cart') ."' method='post'>
                     <div class='table-responsive'>
                       <table class='table'>
                         <thead>
                           <tr>
-                            <th>Details</th>
-                            <th>Menge</th>
-                            <th>Stückpreis</th>
-                            <th>Totalpreis</th>
+                            <th>" . _('details') . "</th>
+                            <th>" . _('amount') . "</th>
+                            <th>" . _('single price') . "</th>
+                            <th>" . _('total price') . "</th>
                             <th></th>
                           </tr>
                         </thead>
@@ -73,10 +75,16 @@ class CartView
                         </tbody>
                       </table>
                     </div>
-                    <div class='total'><strong>Total: ". number_format($this->model->getCartBalance(), 2) ." CHF</strong></div>
-                    <input type='text' id='action' value='' style='display: none;'/>
-                    <input type='submit' id='submitcheckout' value='". _('checkout') ."'/>
-
+                    <div class='container-fluid'>
+                        <div class='row'>
+                            <div class='col-md-8'>
+                                <strong>Total: ". number_format($this->model->getCartBalance(), 2) ." CHF</strong>
+                            </div>
+                            <div class='col-md-4'>
+                                <button id='checkout' name='checkout' class='btn btn-success'>". _('checkout') ."</button>
+                            </div>
+                        </div>
+                    </div>
                   </form>";
         }
 

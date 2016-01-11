@@ -25,7 +25,7 @@ class Page
         $res = $result->fetch_array();
 
         $this->title = $res['title'];
-        $this->content = $res['content'];
+        $this->content = utf8_encode($res['content']);
         $this->lang = $res['lang'];
         $this->translof = $res['translof'];
 

@@ -21,12 +21,12 @@ class ProductView
         $products = "";
 
         foreach ($this->model->getProducts() as $product){
-
+            $image = json_decode($product->__get('images'), true);
             $productlink = "/myshop/". _('product') . "/". $product->__get('nicename');
 
             $products .= "<div class='col-md-3 special-products-grid text-center'>
-                                <a class='brand-name' href='" . $productlink . "'><img src='/myshop/images/b1.jpg' title='name'></a>
-                                <a class='product-here' href='" . $productlink . "'><img src='/myshop/images/p1.jpg' title='product-name'></a>
+                                <a class='brand-name' href='" . $productlink . "'><img src='/myshop/images/brands/" . $product->__get('brand_nicename') . ".jpg' title='" . $product->__get('brand') . "'></a>
+                                <a class='product-here' href='" . $productlink . "'><img src='/myshop/images/products/" . $image['thumb'] . "' title='" . $product->__get('name1') . "'></a>
                                 <h4><a href='" . $productlink . "'>". $product->__get('name1') ."</a></h4>
                                 <a class='product-btn' href='" . $productlink . "'><span>" . $product->__get('price2') . "</span><small>". _('Get now!') ."</small><label></label></a>
                             </div>";

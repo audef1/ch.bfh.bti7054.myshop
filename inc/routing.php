@@ -22,6 +22,14 @@ $route->add("/cart", "CartView");
 $route->add("/warenkorb", "CartView");
 $route->add("/panier", "CartView");
 
+$route->add("/checkout", "CheckoutView");
+$route->add("/kasse", "CheckoutView");
+$route->add("/caisse", "CheckoutView");
+
+$route->add("/register", "RegisterView");
+$route->add("/registrieren", "RegisterView");
+$route->add("/registrer", "RegisterView");
+
 $route->add("/kontakt", "ContactView");
 $route->add("/contact", "ContactView");
 
