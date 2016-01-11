@@ -1,11 +1,11 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:User:User{% endblock %}
+{% block title %}User Overview{% endblock %}
 
 {% block body %}
-<h1>Welcome to the User:User page</h1>
+<h1>User Overview</h1>
 
-<a class="btn btn-default ws-table-add" href="{{ path('app_user_usernew') }}" role="button"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+<a class="btn btn-default ws-table-add" href="{{ path('app_user_usernew') }}" ><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
     <table class="table table-striped">
         <tr>
             <th>{% trans %}#{% endtrans %}</th>
