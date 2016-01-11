@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title of the document</title>
+    </head>
+
+    <body>
+        {% if error is defined %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('login_check') }}" method="post">
+            <label for="username">Username:</label>
+            
+            <input type="text" id="username" name="_username" value="{% if last_username is defined %}{{ last_username }}{% endif %}" />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="_password" />
+
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account" />
+            #}
+
+            <button type="submit">login</button>
+        </form>
+    </body>
+
+</html>

@@ -22,7 +22,6 @@ class ProductStockController extends Controller {
                 ->distinct()
                 ->getQuery()
                 ->getResult();
-
         
         $repository = $this->getDoctrine()->getRepository('AppBundle:ProductStock');
         foreach ($products as $productNumber) {

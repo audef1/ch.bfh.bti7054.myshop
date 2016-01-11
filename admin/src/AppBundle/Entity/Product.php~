@@ -101,7 +101,7 @@ class Product
      *
      * @ORM\Column(name="hidden", type="boolean", nullable=false)
      */
-    private $hidden = '0';
+    private $hidden = false;
 
     /**
      * @var integer
