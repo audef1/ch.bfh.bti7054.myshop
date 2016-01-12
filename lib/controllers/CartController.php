@@ -65,6 +65,9 @@ class CartController
 
         $_SESSION['cart'] = serialize($cart);
         $this->view = new CartView($cart);
+        
+        $langselect = new LanguageView(null);
+        $langselect->render();
     }
 
     public function renderView(){

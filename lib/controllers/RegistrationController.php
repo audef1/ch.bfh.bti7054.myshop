@@ -15,6 +15,9 @@ class RegistrationController
     {
         $this->parameter = $parameter;
         $this->view = new RegisterView();
+        
+        $langselect = new LanguageView(null);
+        $langselect->render();
     }
 
     public function renderView(){

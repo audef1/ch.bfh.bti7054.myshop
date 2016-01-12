@@ -10,6 +10,8 @@ class HomeView
 {
 
     public function __construct() {
+        $langselect = new LanguageView(null);
+        $langselect->render();
 
     }
 

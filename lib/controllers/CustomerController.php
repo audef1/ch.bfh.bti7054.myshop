@@ -18,6 +18,9 @@ class CustomerController
         else{
             $this->view = new LoginView();
         }
+        
+        $langselect = new LanguageView(null);
+        $langselect->render();
     }
 
     public function renderView(){

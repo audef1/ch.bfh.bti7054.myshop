@@ -40,6 +40,9 @@ class LoginController
                 $this->view = new LoginView();
             }
         }
+        
+        $langselect = new LanguageView($this->model);
+        $langselect->render();
     }
 
     public function renderView(){

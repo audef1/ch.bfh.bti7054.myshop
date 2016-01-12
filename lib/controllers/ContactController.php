@@ -13,6 +13,9 @@ class ContactController
     public function __construct()
     {
         $this->view = new ContactView();
+        
+        $langselect = new LanguageView($this->model);
+        $langselect->render();
     }
 
     public function renderView(){

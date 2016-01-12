@@ -16,7 +16,7 @@ class Products
         //connect to db and get page with $id
         $db = DatabaseController::getInstance();
         $mysqli = $db->getConnection();
-        $sql_query = "SELECT product_id FROM product WHERE lang = '" . $_COOKIE['locale'] . "' AND hidden != 1;";
+        $sql_query = "SELECT product_id FROM product WHERE lang = '" . Trans::getDomain() . "' AND hidden != 1;";
         if ($result = $mysqli->query($sql_query)) {
 
             while ($row = mysqli_fetch_row($result)) {

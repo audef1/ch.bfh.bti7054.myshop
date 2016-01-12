@@ -29,7 +29,7 @@ class PageController
         $this->view = new PageView($page);
         $this->model = $page;
 
-        $langselect = new LanguageView($page);
+        $langselect = new LanguageView($this->model);
         $langselect->render();
     }
 

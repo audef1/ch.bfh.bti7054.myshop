@@ -21,7 +21,7 @@ function __autoload($class_name) {
     // try to load class
     foreach ($dirs as $dir) {
         $file = $root . $dir . $class_name . ".php";
-        
+        $file = str_replace("\\", "/", $file);
         if (file_exists($file)) {
             require_once($file);
             
