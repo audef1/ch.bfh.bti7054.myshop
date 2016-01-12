@@ -54,7 +54,15 @@ class LanguageView {
                     });
                 </script>";
 
-            $langs = "<li role='presentation' class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'><img src='/myshop/images/flags/" . $_COOKIE['locale'] . ".png' /></a><ul class='dropdown-menu'>";
+            $langs = "<li role='presentation' class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'><img src='/myshop/images/flags/" . Trans::getDomain() . ".png' /></a><ul class='dropdown-menu'>";
+
+            foreach (Trans::getAllDomains() as $lang) {
+                if (strpos(RouteController::getCurrentRoute(), Trans::getDomain()) !== false) {
+                    $langs .= "<li class='lang'><a href='/myshop" . str_replace(Trans::getDomain(), $lang, RouteController::getCurrentRoute()) . "'><img src='/myshop/images/flags/" . $lang . ".png' />" . Trans::_($lang) . "</a></li>";
+                } else {
+                    $langs .= "<li class='lang'><a href='/myshop/" . $lang . "'><img src='/myshop/images/flags/" . $lang . ".png' />" . Trans::_($lang) . "</a></li>";
+                }
+            }
 
             $langs .= "</ul></li>";
 

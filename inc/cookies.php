@@ -9,5 +9,10 @@
     if (!isset($_COOKIE['locale'])){
         $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
         $lang = $lang . "_" . strtoupper($lang);
-        $_COOKIE['locale'] = $lang;
+        Trans::setDomain($lang);
+    }
+    
+    
+    function setNewLangInCookie() {
+        setcookie("locale",Trans::getDomain(),time()+(60*60*24*360));
     }

@@ -54,7 +54,7 @@ class HeaderView
                         <div class='top-header-info'>
                             <div class='top-contact-info'>
                                 <ul class='unstyled-list list-inline'>
-                                    <li><i class='fa fa-phone'></i> +4112 345 67 89</li>
+                                    <li><i class='fa fa-phone'></i> +41 12 345 67 89</li>
                                     <li><i class='fa fa-envelope'></i> <a href='mailto:info@mywebshop.ch'>info@mywebshop.ch</a></li>
                                     <li>
                                         <span class='lang'></span>

@@ -11,6 +11,7 @@ class RouteController
     private $model;
     private $uriView = "";
     private $additionalParam = "";
+    private static $currentRoute;
 
     public function __construct(Route $model)
     {
@@ -19,6 +20,7 @@ class RouteController
         // get all the parameters from the page uri
         $uriGetParam = isset($_GET['uri']) ? "/" . $_GET['uri'] : '/';
         
+        self::$currentRoute = $uriGetParam;
         
         
         foreach (Trans::getAllDomains() as $value) {
@@ -38,6 +40,12 @@ class RouteController
             $this->uriView = "/" . $uriView[0];
         }
         $this->additionalParam = explode("/", $uriGetParam);
+        
+        setNewLangInCookie();
+    }
+    
+    public static function getCurrentRoute() {
+        return self::$currentRoute;
     }
 
     public function renderView(){

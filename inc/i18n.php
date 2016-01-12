@@ -7,7 +7,7 @@
  */
 
  //Internationalisation
-if (isset($_COOKIE['locale']))
+if (isset($_COOKIE['locale'])){
      $locale = $_COOKIE['locale'];
-
-Trans::setDomain($locale);
+     Trans::setDomain($locale);
+}

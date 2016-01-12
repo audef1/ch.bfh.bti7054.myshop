@@ -14,7 +14,7 @@ class ContactController
     {
         $this->view = new ContactView();
         
-        $langselect = new LanguageView($this->model);
+        $langselect = new LanguageView(null);
         $langselect->render();
     }
 

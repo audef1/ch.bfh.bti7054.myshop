@@ -17,6 +17,9 @@ class ProductsController
         $products = new Products();
         $this->model = $products;
         $this->view = new ProductView($products);
+        
+        $langselect = new LanguageView(null);
+        $langselect->render();
     }
 
     public function renderView(){

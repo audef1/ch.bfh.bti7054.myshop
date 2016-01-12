@@ -9,7 +9,7 @@
 function get_top_menu() {
     $menu = "<ul class='top-nav'>";
 
-    $lang = $_COOKIE['locale'];
+    $lang = Trans::getDomain();
     $pages = array();
 
         //add products page to menu
@@ -55,7 +55,7 @@ function get_top_menu() {
 function get_bottom_menu() {
     $menu = "<ul class='unstyled-list list-inline'>";
 
-    $lang = $_COOKIE['locale'];
+    $lang = Trans::getDomain();
     $pages = array();
 
         //add products page to menu
