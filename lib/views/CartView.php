@@ -22,7 +22,7 @@ class CartView
                     <div class='p-content'>
                         <div class='p-content-header'>
                             <div class='p-content-header-left'>
-                                 <h1>" . _('Your Cart') . "</h1>
+                                 <h1>" . Trans::_('Your Cart') . "</h1>
                             </div>
                             <div class='p-content-header-right'>
 
@@ -36,35 +36,35 @@ class CartView
             $images = json_decode($product->__get('images'), true);
             $products .= "<tr>
                             <td>
-                                <a href='/myshop/" . _('product') . "/" . $product->__get('nicename') . "'><img src='/myshop/images/products/". $images['thumb'] ."' class='cartthumb' height='60px'/></a><a href='/myshop/" . _('product') . "/" . $product->__get('nicename') . "' class='cartproductlink'><b>" . $product->__get('name1') . "</b></a><br />" . _('size') . ": " . $product->__get('selectedoption') ."
+                                <a href='/myshop/".Trans::getDomain()."/" . Trans::_('product') . "/" . $product->__get('nicename') . "'><img src='/myshop/images/products/". $images['thumb'] ."' class='cartthumb' height='60px'/></a><a href='/myshop/".Trans::getDomain()."/" . Trans::_('product') . "/" . $product->__get('nicename') . "' class='cartproductlink'><b>" . $product->__get('name1') . "</b></a><br />" . Trans::_('size') . ": " . $product->__get('selectedoption') ."
                             </td>
                             <td>
                                 <input type='number' id='". $product->__get('number') ."' min='0' value='" . $product->__get('amount') . "' disabled>
-                                <a href='/myshop/". _('cart') ."/update/". $product->__get('uid')."/" . ($product->__get('amount') + 1) . "'><i class='fa fa-plus-square'></i></a>
-                                <a href='/myshop/". _('cart') ."/update/". $product->__get('uid')."/" . ($product->__get('amount') - 1) . "'><i class='fa fa-minus-square'></i></a>
+                                <a href='/myshop/".Trans::getDomain()."/". Trans::_('cart') ."/update/". $product->__get('uid')."/" . ($product->__get('amount') + 1) . "'><i class='fa fa-plus-square'></i></a>
+                                <a href='/myshop/".Trans::getDomain()."/". Trans::_('cart') ."/update/". $product->__get('uid')."/" . ($product->__get('amount') - 1) . "'><i class='fa fa-minus-square'></i></a>
                             </td>
                             <td>" . number_format($product->__get('price2'), 2) . "</td>
                             <td>" . number_format($product->__get('price2') * $product->__get('amount'), 2) . "</td>
                             <td>
-                                <a href='/myshop/". _('cart') ."/delete/". $product->__get('uid') . "'><i class='fa fa-trash'></i></a>
+                                <a href='/myshop/".Trans::getDomain()."/". Trans::_('cart') ."/delete/". $product->__get('uid') . "'><i class='fa fa-trash'></i></a>
                             </td>
                            </tr>";
         }
 
         if ($products == ""){
-            echo _('cart empty');
+            echo Trans::_('cart empty');
         }
         else{
 
-            echo "<form id='cartform' action='". _('cart') ."' method='post'>
+            echo "<form id='cartform' action='". Trans::_('cart') ."' method='post'>
                     <div class='table-responsive'>
                       <table class='table'>
                         <thead>
                           <tr>
-                            <th>" . _('details') . "</th>
-                            <th>" . _('amount') . "</th>
-                            <th>" . _('single price') . "</th>
-                            <th>" . _('total price') . "</th>
+                            <th>" . Trans::_('details') . "</th>
+                            <th>" . Trans::_('amount') . "</th>
+                            <th>" . Trans::_('single price') . "</th>
+                            <th>" . Trans::_('total price') . "</th>
                             <th></th>
                           </tr>
                         </thead>
@@ -81,7 +81,7 @@ class CartView
                                 <strong>Total: ". number_format($this->model->getCartBalance(), 2) ." CHF</strong>
                             </div>
                             <div class='col-md-4'>
-                                <button id='checkout' name='checkout' class='btn btn-success'>". _('checkout') ."</button>
+                                <button id='checkout' name='checkout' class='btn btn-success'>". Trans::_('checkout') ."</button>
                             </div>
                         </div>
                     </div>

@@ -20,26 +20,26 @@ class HeaderView
         }
 
         if (!isset($_SESSION['user'])) {
-            $this->login = "<li class='login'><a class='login' href='/myshop/login'>" . _('Login') . "</a></li>
-                            <li><a class='rigister' href='/myshop/register'>" . _('Register') . "<span></span></a></li>
+            $this->login = "<li class='login'><a class='login' href='/myshop/".Trans::getDomain()."/"."login'>" . Trans::_('Login') . "</a></li>
+                            <li><a class='rigister' href='/myshop/".Trans::getDomain()."/"."register'>" . Trans::_('Register') . "<span></span></a></li>
                             <div class='clearfix'> </div>";
         }
         else {
             $user = unserialize($_SESSION['user']);
             $this->login =  "";
-            $this->login = "<li class='login'><a class='login' href='/myshop/myaccount'>" . $user->__get('firstname') . "</a></li>
-                            <li><a class='rigister' href='/myshop/logout'>" . _('Logout') . "<span></span></a></li>
+            $this->login = "<li class='login'><a class='login' href='/myshop/".Trans::getDomain()."/"."myaccount'>" . $user->__get('firstname') . "</a></li>
+                            <li><a class='rigister' href='/myshop/".Trans::getDomain()."/"."logout'>" . Trans::_('Logout') . "<span></span></a></li>
                             <div class='clearfix'> </div>";
         }
 
         //update cart count
         if (!isset($_SESSION['cart'])) {
-            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='" . _('cart') . "'>". _('Cart') ."</a>";
+            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='".Trans::getDomain()."/" . Trans::_('cart') . "'>". Trans::_('Cart') ."</a>";
         }
         else {
             $cart = unserialize($_SESSION['cart']);
             $this->cart =  "";
-            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='/myshop/" . _('cart') . "'>". _('Cart') ."<span class='badge'>". $cart->count() ."</span></a>";
+            $this->cart = "<i class='fa fa-shopping-cart'></i><a href='/myshop/".Trans::getDomain()."/" . Trans::_('cart') . "'>". Trans::_('Cart') ."<span class='badge'>". $cart->count() ."</span></a>";
         }
 
     }
@@ -49,7 +49,7 @@ class HeaderView
                 <div class='container'>
                     <div class='top-header'>
                         <div class='logo'>
-                            <a href='/myshop/'><img src='/myshop/images/logo.png' title='myshop' /></a>
+                            <a href='/myshop/".Trans::getDomain()."'><img src='/myshop/images/logo.png' title='myshop' /></a>
                         </div>
                         <div class='top-header-info'>
                             <div class='top-contact-info'>
@@ -88,7 +88,7 @@ class HeaderView
                         </nav>
                         <!-- <div class='top-header-search-box'>
                             <form>
-                                <input type='text' placeholder='" . _('Search') . "' required  maxlength='22'>
+                                <input type='text' placeholder='" . Trans::_('Search') . "' required  maxlength='22'>
                                 <input type='submit' value=' ' >
                             </form>
                         </div> -->

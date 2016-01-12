@@ -20,7 +20,7 @@ class CheckoutView
                     <div class='p-content'>
                         <div class='p-content-header'>
                             <div class='p-content-header-left'>
-                                 <h1>" . _('Checkout') . "</h1>
+                                 <h1>" . Trans::_('Checkout') . "</h1>
                             </div>
                             <div class='p-content-header-right'>
 

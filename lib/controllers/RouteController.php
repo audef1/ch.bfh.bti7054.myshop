@@ -18,10 +18,25 @@ class RouteController
 
         // get all the parameters from the page uri
         $uriGetParam = isset($_GET['uri']) ? "/" . $_GET['uri'] : '/';
-
+        
+        
+        
+        foreach (Trans::getAllDomains() as $value) {
+            if (strpos($uriGetParam,$value) !== false) {
+                Trans::setDomain($value);
+            }
+            $uriGetParam = str_replace("/".$value, "", $uriGetParam);
+        }
+        
+        
+        
         $uriView = explode("/",$uriGetParam);
-        $this->uriView = "/" . $uriView[1];
-
+        
+        if(isset($uriView[1])){
+            $this->uriView = "/" . $uriView[1];
+        }else{
+            $this->uriView = "/" . $uriView[0];
+        }
         $this->additionalParam = explode("/", $uriGetParam);
     }
 
@@ -31,11 +46,11 @@ class RouteController
             $cart = new Cart();
             $_SESSION['cart'] = serialize($cart);
         }
-
+        
         foreach ($this->model->getUris() as $key => $value) {
 
             if (preg_match("#^$value$#", $this->uriView)){
-
+                
                 if ($this->model->getView($key) === "PageView"){
                     $pagecontroller = new PageController($this->additionalParam);
                     $pagecontroller->renderView();

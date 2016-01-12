@@ -10,7 +10,4 @@
 if (isset($_COOKIE['locale']))
      $locale = $_COOKIE['locale'];
 
-putenv("LC_ALL=$locale");
-setlocale(LC_ALL, $locale);
-bindtextdomain("messages", "./locale");
-textdomain("messages");
+Trans::setDomain($locale);

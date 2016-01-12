@@ -11,7 +11,9 @@ function __autoload($class_name) {
     $dirs = [
         '/myShop/lib/models/',
         '/myShop/lib/controllers/',
-        '/myShop/lib/views/'
+        '/myShop/lib/views/',
+        '/myShop/lib/yaml/',
+        '/myShop/lib/service/'
     ];
 
     $root = $_SERVER['DOCUMENT_ROOT'];
@@ -19,8 +21,10 @@ function __autoload($class_name) {
     // try to load class
     foreach ($dirs as $dir) {
         $file = $root . $dir . $class_name . ".php";
+        
         if (file_exists($file)) {
             require_once($file);
+            
             break;
         }
     }

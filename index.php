@@ -7,6 +7,7 @@
  */
 require_once("inc/autoloader.php");
 session_start();
+Trans::init();
 ?>
 <!DOCTYPE html>
 <html>

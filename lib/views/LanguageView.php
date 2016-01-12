@@ -32,9 +32,9 @@ class LanguageView
 
         foreach ($this->model->__get('languages') as $locale => $lang){
             if($this->model instanceof Product) {
-                $langs .= "<li class='lang'><a href='/myshop/". dcgettext($locale, "product", 6)."/" . $lang . "'><img src='/myshop/images/flags/" . $locale . ".png' />" . _($locale) . "</a></li>";
+                $langs .= "<li class='lang'><a href='/myshop/".$locale . "/". Trans::_fd("product",$locale)."/" . $lang . "'><img src='/myshop/images/flags/" . $locale . ".png' />" . Trans::_($locale) . "</a></li>";
             }else{
-                $langs .= "<li class='lang'><a href='/myshop/" . $lang . "'><img src='/myshop/images/flags/" . $locale . ".png' />" . _($locale) . "</a></li>";
+                $langs .= "<li class='lang'><a href='/myshop/" .$locale . "/". $lang . "'><img src='/myshop/images/flags/" . $locale . ".png' />" . Trans::_($locale) . "</a></li>";
             }
         }
 

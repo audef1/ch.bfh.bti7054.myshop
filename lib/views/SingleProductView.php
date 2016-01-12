@@ -56,7 +56,7 @@ class SingleProductView
         $opts = json_decode($this->model->options);
         $options = "";
         foreach ($opts as $key => $value){
-            $options .= "<label class='col-md-2 control-label' for='size-select'>" . _( $key ) . ":</label>
+            $options .= "<label class='col-md-2 control-label' for='size-select'>" . Trans::_( $key ) . ":</label>
                                   <div class='col-md-2'>
                                     <select id='size-select' name='size-select' class='form-control'>";
 
@@ -71,10 +71,10 @@ class SingleProductView
 
         //generate add-to-cart button
         if ($this->model->__get('stock') == 0){
-            $this->button = "<input type='button' id='addtocart' class='outofstock' value='" . _('out of stock') . "' disabled/>";
+            $this->button = "<input type='button' id='addtocart' class='outofstock' value='" . Trans::_('out of stock') . "' disabled/>";
         }
         else{
-            $this->button = "<input type='button' id='addtocart' value='" . _('Add to cart') . "' />";
+            $this->button = "<input type='button' id='addtocart' value='" . Trans::_('Add to cart') . "' />";
         }
     }
 
@@ -108,10 +108,10 @@ class SingleProductView
 						<div class='product-price-details'>
 							<div class='row'>
 						    	<div class='col-md-3'>
-						    	    <p>" . _('stock') . ": " . $this->model->__get('stock') . "</p>
+						    	    <p>" . Trans::_('stock') . ": " . $this->model->__get('stock') . "</p>
 						    	</div>
 						    	<div class='col-md-9'>
-						    	    <a class='shipping' href='/myshop/". _('shipping') ."'><span></span>" . _('Free shipping') . "</a>
+						    	    <a class='shipping' href='/myshop/".Trans::getDomain()."/". Trans::_('shipping') ."'><span></span>" . Trans::_('Free shipping') . "</a>
 						    	</div>
 						    </div>
 							<div class='clearfix'> </div>
@@ -120,7 +120,7 @@ class SingleProductView
 
 								" . $this->options . "
 
-                                <label class='col-md-2 control-label' for='qty-select'>" . _('amount') . ":</label>
+                                <label class='col-md-2 control-label' for='qty-select'>" . Trans::_('amount') . ":</label>
                                 <div class='col-md-2'>
                                     <select id='qty-select' name='qty-select' class='form-control'>
                                       <option value='1'>1</option>
@@ -139,10 +139,10 @@ class SingleProductView
 
                                         var qty = $('#qty-select').find(\":selected\").text();
                                         var opt = $('#size-select').find(\":selected\").text();
-                                        carturl = \"/myshop/". _('cart') ."/add/". $this->model->__get('number') ."/\" + qty + \"/\" + opt + \"\";
+                                        carturl = \"/myshop/". Trans::_('cart') ."/add/". $this->model->__get('number') ."/\" + qty + \"/\" + opt + \"\";
 
                                             if (qty > " . $this->model->__get('stock') . "){
-                                                $('.message').html(\"<div class='alert alert-danger message' role='alert'>". _('not enough stock') ."</div>\");
+                                                $('.message').html(\"<div class='alert alert-danger message' role='alert'>". Trans::_('not enough stock') ."</div>\");
                                             }
                                             else{
                                                 $.ajax({
@@ -152,7 +152,7 @@ class SingleProductView
                                                     .done(function( msg ) {
                                                         $('.badge').html(parseInt($('.badge').text()) + 1);
                                                         console.log(carturl);
-                                                        $('.message').html(\"<div class='alert alert-success message' role='alert'>". _('added to cart') ."</div>\");
+                                                        $('.message').html(\"<div class='alert alert-success message' role='alert'>". Trans::_('added to cart') ."</div>\");
                                                 });
                                             }
                                         });
@@ -169,19 +169,19 @@ class SingleProductView
 					<!--Horizontal Tab-->
 				    <div id='horizontalTab'>
 				        <ul>
-				            <li><a href='#tab-1'>" . _('Product overview') . "</a></li>
-				            <li><a href='#tab-2'>" . _('Features') . "</a></li>
+				            <li><a href='#tab-1'>" . Trans::_('Product overview') . "</a></li>
+				            <li><a href='#tab-2'>" . Trans::_('Features') . "</a></li>
 				        </ul>
 				        <div id='tab-1' class='product-complete-info'>
-				        	<h3>" . _('Description') . ":</h3>
+				        	<h3>" . Trans::_('Description') . ":</h3>
 				        	<p>" . $this->model->__get('description') . "</p>
-				       		<span>" . _('Details') . ":</span>
+				       		<span>" . Trans::_('Details') . ":</span>
 				       		<div class='product-fea'>
 				       			" . $this->details . "
 				       		</div>
 				        </div>
 				        <div id='tab-2' class='product-complete-info'>
-				        	<h3>" . _('Description') . "</h3>
+				        	<h3>" . Trans::_('Description') . "</h3>
 				        	" . $this->features . "
 				        </div>
 				    </div>

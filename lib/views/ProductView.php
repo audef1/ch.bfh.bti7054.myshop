@@ -22,13 +22,13 @@ class ProductView
 
         foreach ($this->model->getProducts() as $product){
             $image = json_decode($product->__get('images'), true);
-            $productlink = "/myshop/". _('product') . "/". $product->__get('nicename');
+            $productlink = "/myshop/". Trans::getDomain() ."/". Trans::_('product') . "/". $product->__get('nicename');
 
             $products .= "<div class='col-md-3 special-products-grid text-center'>
                                 <a class='brand-name' href='" . $productlink . "'><img src='/myshop/images/brands/" . $product->__get('brand_nicename') . ".jpg' title='" . $product->__get('brand') . "'></a>
                                 <a class='product-here' href='" . $productlink . "'><img src='/myshop/images/products/" . $image['thumb'] . "' title='" . $product->__get('name1') . "'></a>
                                 <h4><a href='" . $productlink . "'>". $product->__get('name1') ."</a></h4>
-                                <a class='product-btn' href='" . $productlink . "'><span>" . $product->__get('price2') . "</span><small>". _('Get now!') ."</small><label></label></a>
+                                <a class='product-btn' href='" . $productlink . "'><span>" . $product->__get('price2') . "</span><small>". Trans::_('Get now!') ."</small><label></label></a>
                             </div>";
         }
 
@@ -42,7 +42,7 @@ class ProductView
                                 <h3>SPECIAL <span>PRODUCTS</span></h3>
                             </div>
                             <div class='s-products-head-right'>
-                                <a href='" . _('products') . "'><span> </span>view all products</a>
+                                <a href='" . Trans::_('products') . "'><span> </span>view all products</a>
                             </div>
                             <div class='clearfix'> </div>
                         </div>

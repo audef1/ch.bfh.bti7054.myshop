@@ -19,7 +19,7 @@ class FooterView
             <div class='footer'>
                 <div class='container'>
                     <div class='col-md-3 footer-logo'>
-                        <a href='index.php'><img src='/myshop/images/footer-logo.png' title='myshop' /></a>
+                        <a href='.'><img src='/myshop/images/footer-logo.png' title='myshop' /></a>
                     </div>
                     <div class='col-md-9 footer-links'>
                         " . get_bottom_menu() . "

@@ -22,8 +22,8 @@ class HomeView
 
                 <!--- slider --->
 
-                    <link rel='stylesheet' href='css/flickity.css' media='screen'>
-                    <script src='js/flickity.js'></script>
+                    <link rel='stylesheet' href='/myshop/css/flickity.css' media='screen'>
+                    <script src='/myshop/js/flickity.js'></script>
 
                     <div class='slider'>
                         <div class='slider-cell'>

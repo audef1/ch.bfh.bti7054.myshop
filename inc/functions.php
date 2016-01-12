@@ -14,13 +14,13 @@ function get_top_menu() {
 
         //add products page to menu
         if ($lang == "en_EN"){
-            $pages[] = array("Products", "/myshop/products");
+            $pages[] = array("Products", "/myshop/en_EN/products");
         }
         else if ($lang == "de_DE"){
-            $pages[] = array("Produkte", "/myshop/produkte");
+            $pages[] = array("Produkte", "/myshop/de_DE/produkte");
         }
         else if ($lang == "fr_FR"){
-            $pages[] = array("Produits", "/myshop/produits");
+            $pages[] = array("Produits", "/myshop/fr_FR/produits");
         }
 
     // dynamically create page-routes from db
@@ -30,19 +30,22 @@ function get_top_menu() {
     $result = $mysqli->query($sql_query) or trigger_error($mysqli->error."[$sql_query]");
 
     while ($row = $result->fetch_row()) {
-        $pages[] = array(($row[1]), "/myshop/" . $row[0]);
+        $pages[] = array(($row[1]), "/myshop/" . Trans::getDomain(). "/" . $row[0]);
     }
 
         //add contact page to menu
-        if ($lang == "en_EN" || $lang == "fr_FR"){
-            $pages[] = array("Contact", "/myshop/contact");
+        if ($lang == "en_EN"){
+            $pages[] = array("Contact", "/myshop/en_EN/contact");
+        }
+        else if ($lang == "fr_FR"){
+            $pages[] = array("Kontakt", "/myshop/fr_FR/contact");
         }
         else if ($lang == "de_DE"){
-            $pages[] = array("Kontakt", "/myshop/kontakt");
+            $pages[] = array("Kontakt", "/myshop/de_DE/kontakt");
         }
 
     foreach ($pages as $page) {
-        $menu .= "<li><a href='". $page[1] ."'>". $page[0] ."</a><span></span></li>";
+        $menu .= "<li><a href='" . $page[1] ."'>". $page[0] ."</a><span></span></li>";
     }
 
     $menu .= "<div class='clearfix'></div></ul>";

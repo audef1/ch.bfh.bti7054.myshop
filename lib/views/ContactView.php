@@ -19,7 +19,7 @@ class ContactView
                     <div class='p-content'>
                         <div class='p-content-header'>
                             <div class='p-content-header-left'>
-                                 <h1>" . _('Contactform') . "</h1>
+                                 <h1>" . Trans::_('Contactform') . "</h1>
                             </div>
                             <div class='p-content-header-right'>
 
@@ -31,7 +31,7 @@ class ContactView
                             <fieldset>
                             <!-- Text input-->
                             <div class='form-group'>
-                              <label class='col-md-4 control-label' for='name'>" . _('name') . "</label>
+                              <label class='col-md-4 control-label' for='name'>" . Trans::_('name') . "</label>
                               <div class='col-md-4'>
                               <input id='name' name='name' type='text' placeholder='' class='form-control input-md' required=''>
 
@@ -40,7 +40,7 @@ class ContactView
 
                             <!-- Text input-->
                             <div class='form-group'>
-                              <label class='col-md-4 control-label' for='email'>" . _('email') . "</label>
+                              <label class='col-md-4 control-label' for='email'>" . Trans::_('email') . "</label>
                               <div class='col-md-4'>
                               <input id='email' name='email' type='text' placeholder='' class='form-control input-md' required=''>
 
@@ -49,7 +49,7 @@ class ContactView
 
                             <!-- Textarea -->
                             <div class='form-group'>
-                              <label class='col-md-4 control-label' for='message'>" . _('message') . "</label>
+                              <label class='col-md-4 control-label' for='message'>" . Trans::_('message') . "</label>
                               <div class='col-md-4'>
                                 <textarea class='form-control' id='message' name='message' rows='4'></textarea>
                               </div>
@@ -59,7 +59,7 @@ class ContactView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='submit'></label>
                               <div class='col-md-4'>
-                                <button id='submit' name='submit' class='btn btn-default'>" . _('submit') . "</button>
+                                <button id='submit' name='submit' class='btn btn-default'>" . Trans::_('submit') . "</button>
                               </div>
                             </div>
 
