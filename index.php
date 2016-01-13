@@ -8,6 +8,7 @@
 require_once("inc/autoloader.php");
 session_start();
 Trans::init();
+require_once("inc/cookies.php");
 ?>
 <!DOCTYPE html>
 <html>
