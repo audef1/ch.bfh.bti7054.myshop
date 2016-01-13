@@ -38,7 +38,7 @@ function get_top_menu() {
             $pages[] = array("Contact", "/myshop/en_EN/contact");
         }
         else if ($lang == "fr_FR"){
-            $pages[] = array("Kontakt", "/myshop/fr_FR/contact");
+            $pages[] = array("Contact", "/myshop/fr_FR/contact");
         }
         else if ($lang == "de_DE"){
             $pages[] = array("Kontakt", "/myshop/de_DE/kontakt");

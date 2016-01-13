@@ -40,7 +40,7 @@ class CustomerView
 
                         <div class='row'>
                             <div class='col-md-6'>
-                                <h2>" . Trans::_('Address') . "</h2>"
+                                <h2>" . Trans::_('shippingaddress') . "</h2>"
                                 . ($this->model->title) . "<br/>"
                                 . ($this->model->firstname) . " " . ($this->model->lastname) . "<br/>"
                                 . ($this->model->address) . "<br/>"
@@ -51,7 +51,7 @@ class CustomerView
                                 ."
                             </div>
                             <div class='col-md-6'>
-                            <h2>" . Trans::_('Alternative Billingaddress') ."</h2>"
+                            <h2>" . Trans::_('billingaddress') ."</h2>"
                                 . ($this->model->title2) . "<br/>"
                                 . ($this->model->firstname2) . " " . ($this->model->lastname2) . "<br/>"
                                 . ($this->model->address2) . "<br/>"
