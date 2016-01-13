@@ -8,8 +8,23 @@
  */
 class CheckoutView
 {
+    private $step;
+    private $checkout;
 
     public function __construct() {
+
+        if (!isset($_SESSION['step'])){
+            $this->step = "";
+            $this->checkout = "";
+        }
+        elseif($_SESSION['step'] == 1){
+            $this->step = "";
+            $this->checkout = "";
+        }
+        elseif($_SESSION['step'] == 2){
+            $this->step = "";
+            $this->checkout = "";
+        }
 
     }
 

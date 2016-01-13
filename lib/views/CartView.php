@@ -56,7 +56,7 @@ class CartView
         }
         else{
 
-            echo "<form id='cartform' action='". Trans::_('cart') ."' method='post'>
+            echo "<form id='cartform' action='/myshop/" . Trans::getDomain() . "/". Trans::_('checkout') ."' method='post'>
                     <div class='table-responsive'>
                       <table class='table'>
                         <thead>
@@ -81,7 +81,7 @@ class CartView
                                 <strong>Total: ". number_format($this->model->getCartBalance(), 2) ." CHF</strong>
                             </div>
                             <div class='col-md-4'>
-                                <button id='checkout' name='checkout' class='btn btn-success'>". Trans::_('checkout') ."</button>
+                                <button id='checkout' name='checkout' class='btn btn-success'>". Trans::_('Checkout') ."</button>
                             </div>
                         </div>
                     </div>

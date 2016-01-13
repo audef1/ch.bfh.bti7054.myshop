@@ -143,6 +143,7 @@ class SingleProductView
 
                                             if (qty > " . $this->model->__get('stock') . "){
                                                 $('.message').html(\"<div class='alert alert-danger message' role='alert'>". Trans::_('not enough stock') ."</div>\");
+                                                $(function() { setTimeout(function() { $('.message').hide(400) }, 2500); });
                                             }
                                             else{
                                                 $.ajax({

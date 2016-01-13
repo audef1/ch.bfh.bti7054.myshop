@@ -91,6 +91,10 @@ class RouteController
                     $registrationcontroller = new RegistrationController($this->additionalParam);
                     $registrationcontroller->renderView();
                 }
+                else if($this->model->getView($key) === "CheckoutView") {
+                    $checkoutcontroller = new CheckoutController($this->additionalParam);
+                    $checkoutcontroller->renderView();
+                }
                 else {
                     $useView = $this->model->getView($key);
                     $view = new $useView();
