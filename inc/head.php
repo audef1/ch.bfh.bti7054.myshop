@@ -14,7 +14,7 @@
     require_once("inc/routing.php");
 ?>
 
-<title>myWebshop | Home</title>
+<title>myShop | Home</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8" />

@@ -22,7 +22,7 @@ class CustomerView
         echo "<div class='container'><div class='alert alert-success message' role='alert'><strong>" . Trans::_("Login successful") . ":</strong> ". Trans::_('Hello') . " <strong>".$this->model->__get('firstname')."</strong>!</div></div>";
 
         //hide message after x seconds
-        echo "<script>$(function() { setTimeout(function() { $('.alert-success').hide(400) }, 5000); }); </script>";
+        echo "<script>$(function() { setTimeout(function() { $('.message').hide(400) }, 5000); }); </script>";
 
         echo"
             <div class='content'>
