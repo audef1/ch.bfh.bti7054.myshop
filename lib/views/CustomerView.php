@@ -58,9 +58,7 @@ class CustomerView
                                 . ($this->model->zip2) . " " . ($this->model->location2) . "<br/>"
                                 ."
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>

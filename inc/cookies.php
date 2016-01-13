@@ -12,8 +12,7 @@
         Trans::setDomain($lang);
         setcookie("locale",$lang,time()+(60*60*24*360));
     }
-    
-    
+
     function setNewLangInCookie() {
         $_COOKIE['locale'] = Trans::getDomain();
         //setcookie("locale",Trans::getDomain(),time()+(60*60*24*360));

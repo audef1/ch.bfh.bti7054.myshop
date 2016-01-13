@@ -121,7 +121,7 @@ class MimeTypeExtensionGuesser implements ExtensionGuesserInterface
         'application/scvp-vp-request' => 'spq',
         'application/scvp-vp-response' => 'spp',
         'application/sdp' => 'sdp',
-        'application/set-payment-initiation' => 'setpay',
+        'application/set-payment.html-initiation' => 'setpay',
         'application/set-registration-initiation' => 'setreg',
         'application/shf+xml' => 'shf',
         'application/smil+xml' => 'smi',

@@ -34,7 +34,14 @@ class LoginController
 
                 //authenticate
                 if ($this->login($username,$password)){
-                    $this->view = new CustomerView(unserialize($_SESSION['user']));
+
+                    //if checkout was startet, but not logged in
+                    if(isset($_SESSION['checkout']) && $_SESSION['checkout'] == 1){
+                        $this->view = new CheckoutView();
+                    }
+                    else{
+                        $this->view = new CustomerView(unserialize($_SESSION['user']));
+                    }
                 }
             }else{
                 $this->view = new LoginView();

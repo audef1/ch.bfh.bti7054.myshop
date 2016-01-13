@@ -16,6 +16,7 @@ class CheckoutController
             $this->view = new CheckoutView();
         }
         else{
+            $_SESSION['checkout'] = 1;
             $this->view = new LoginView();
         }
 
