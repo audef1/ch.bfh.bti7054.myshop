@@ -50,15 +50,7 @@ class HomeView
                         </div>
                     </div>
 
-                    <script>
-                        $('.slider').flickity({
-                          // options
-                          cellAlign: 'left',
-                          contain: true,
-                          wrapAround: true,
-                          autoPlay: 10000
-                        });
-                    </script>
+
 
                 <!--- end slider --->
 
@@ -70,6 +62,15 @@ class HomeView
         $productsview->render();
 
         echo "</div>";
+        echo "<script>
+                    $('.slider').flickity({
+                          // options
+                          cellAlign: 'left',
+                          contain: true,
+                          wrapAround: true,
+                          autoPlay: 10000
+                        });
+                    </script>";
 
         $footer = new FooterView();
         $footer->render();

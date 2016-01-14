@@ -9,11 +9,11 @@
 function __autoload($class_name) {
 
     $dirs = [
-        '/myShop/lib/models/',
-        '/myShop/lib/controllers/',
-        '/myShop/lib/views/',
-        '/myShop/lib/yaml/',
-        '/myShop/lib/service/'
+        '/myshop/lib/models/',
+        '/myshop/lib/controllers/',
+        '/myshop/lib/views/',
+        '/myshop/lib/yaml/',
+        '/myshop/lib/service/'
     ];
 
     $root = $_SERVER['DOCUMENT_ROOT'];
