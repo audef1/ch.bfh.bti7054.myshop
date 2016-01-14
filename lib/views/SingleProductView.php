@@ -142,8 +142,8 @@ class SingleProductView
                                         carturl = \"/myshop/". Trans::_('cart') ."/add/". $this->model->__get('number') ."/\" + qty + \"/\" + opt + \"\";
 
                                             if (qty > " . $this->model->__get('stock') . "){
-                                                $('.message').html(\"<div class='alert alert-danger message' role='alert'>". Trans::_('not enough stock') ."</div>\");
-                                                $(function() { setTimeout(function() { $('.message').hide(400) }, 2500); });
+                                                $('.message').html(\"<div class='alert alert-danger message msg1' role='alert'>". Trans::_('not enough stock') ."</div>\");
+                                                $(function() { setTimeout(function() { $('.msg1').hide(400) }, 2500); });
                                             }
                                             else{
                                                 $.ajax({
@@ -153,8 +153,8 @@ class SingleProductView
                                                     .done(function( msg ) {
                                                         $('.badge').html(parseInt($('.badge').text()) + 1);
                                                         console.log(carturl);
-                                                        $('.message').html(\"<div class='alert alert-success message' role='alert'>". Trans::_('added to cart') ."</div>\");
-                                                        $(function() { setTimeout(function() { $('.message').hide(400) }, 2500); });
+                                                        $('.message').html(\"<div class='alert alert-success message msg2' role='alert'>". Trans::_('added to cart') ."</div>\");
+                                                        $(function() { setTimeout(function() { $('.msg2').hide(400) }, 2500); });
                                                 });
                                             }
                                         });
