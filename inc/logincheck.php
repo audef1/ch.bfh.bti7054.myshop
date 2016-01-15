@@ -26,10 +26,12 @@ else{
 
     $result->close();
 
-    if (in_array($_POST['login'], $customers)){
-        return false;
+    $username = strtolower($_POST['login']);
+
+    if (in_array($username, $customers)){
+        echo 'false';
     }
     else{
-        return true;
+        echo 'true';
     }
 }

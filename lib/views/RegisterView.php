@@ -228,16 +228,14 @@ class RegisterView
                                 login: {
                                   required: true,
                                   remote: {
-                                    url: '/myshop/inc/logincheck.php',
-                                    type: 'post',
-                                    data: {
-                                        login: function() {
-                                            return $( '#login' ).val();
-                                        }
-                                    }
+                                        url: '/myshop/inc/logincheck.php',
+                                        type: 'post',
                                   }
-                                }
-                              }
+                                },
+                           },
+                           messages: {
+                                login: '" . Trans::_('usertaken') . "',
+                           },
                          });
                          </script>
                 </div>
@@ -246,3 +244,4 @@ class RegisterView
     }
 
 }
+
