@@ -15,6 +15,8 @@ class RegisterView
 
     public function render()
     {
+        echo "<script type='text/javascript' src='/myshop/js/jquery.validate.min.js'></script>";
+
         echo "
             <div class='content'>
                 <div class='container'>
@@ -29,7 +31,7 @@ class RegisterView
                             <div class='clearfix'> </div>
                         </div>
 
-                        <form class='form-horizontal'>
+                        <form id='regform' name='regform' method='post' class='form-horizontal'>
                             <fieldset>
                                 <legend>" . Trans::_('logininformation') . "</legend>
                                  <!-- Text input-->
@@ -219,6 +221,25 @@ class RegisterView
 
                             </fieldset>
                         </form>
+
+                         <script>
+                         $('#regform').validate({
+                           rules: {
+                                login: {
+                                  required: true,
+                                  remote: {
+                                    url: '/myshop/inc/logincheck.php',
+                                    type: 'post',
+                                    data: {
+                                        login: function() {
+                                            return $( '#login' ).val();
+                                        }
+                                    }
+                                  }
+                                }
+                              }
+                         });
+                         </script>
                 </div>
             </div>
         ";
