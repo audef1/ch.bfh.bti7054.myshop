@@ -65,7 +65,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='title'>" . Trans::_('title') . "</label>
                                   <div class='col-md-4'>
-                                    <select id='title' name='title' class='form-control'>
+                                    <select id='title' name='title' class='form-control' required>
                                       <option value='" . Trans::_('mr') . "'>" . Trans::_('mr') . "</option>
                                       <option value='" . Trans::_('mrs') . "'>" . Trans::_('mrs') . "</option>
                                     </select>
@@ -76,7 +76,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='firstname'>" . Trans::_('firstname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='firstname' name='firstname' type='text' class='form-control input-md' required=''>
+                                  <input id='firstname' name='firstname' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -85,7 +85,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='lastname'>" . Trans::_('lastname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='lastname' name='lastname' type='text' class='form-control input-md' required=''>
+                                  <input id='lastname' name='lastname' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -94,7 +94,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='address'>" . Trans::_('address') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='address' name='address' type='text' class='form-control input-md'>
+                                  <input id='address' name='address' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -103,7 +103,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='zip'>" . Trans::_('zip') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='zip' name='zip' type='text' class='form-control input-md'>
+                                  <input id='zip' name='zip' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -112,7 +112,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='location'>" . Trans::_('location') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='location' name='location' type='text' class='form-control input-md'>
+                                  <input id='location' name='location' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -124,7 +124,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='email'>" . Trans::_('email') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='email' name='email' type='text' class='form-control input-md' required=''>
+                                  <input id='email' name='email' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -156,7 +156,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='firstname2'>" . Trans::_('firstname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='firstname2' name='firstname2' type='text' class='form-control input-md' required=''>
+                                  <input id='firstname2' name='firstname2' type='text' class='form-control input-md'>
 
                                   </div>
                                 </div>
@@ -165,7 +165,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='lastname2'>" . Trans::_('lastname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='lastname2' name='lastname2' type='text' class='form-control input-md' required=''>
+                                  <input id='lastname2' name='lastname2' type='text' class='form-control input-md'>
 
                                   </div>
                                 </div>
@@ -232,9 +232,41 @@ class RegisterView
                                         type: 'post',
                                   }
                                 },
+                                password: 'required',
+                                password2: {
+                                  equalTo: '#password'
+                                },
+                                email: {
+                                  required: true,
+                                  email: true
+                                },
+                                title: 'required',
+                                firstname: 'required',
+                                lastname: 'required',
+                                address: 'required',
+                                zip: 'required',
+                                location: 'required',
                            },
                            messages: {
-                                login: '" . Trans::_('usertaken') . "',
+                                login: {
+                                    required: '" . Trans::_('required') . "',
+                                    remote: '" . Trans::_('usertaken') . "',
+                                },
+                                password: '" . Trans::_('required') . "',
+                                password2: {
+                                    required: '" . Trans::_('required') . "',
+                                    equalTo: '" . Trans::_('notequal') . "',
+                                },
+                                email: {
+                                    required: '" . Trans::_('required') . "',
+                                    email: '" . Trans::_('validemail') . "',
+                                },
+                                title: '" . Trans::_('required') . "',
+                                firstname: '" . Trans::_('required') . "',
+                                lastname: '" . Trans::_('required') . "',
+                                address: '" . Trans::_('required') . "',
+                                zip: '" . Trans::_('required') . "',
+                                location: '" . Trans::_('required') . "',
                            },
                          });
                          </script>
