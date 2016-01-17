@@ -31,7 +31,7 @@ class RegisterView
                             <div class='clearfix'> </div>
                         </div>
 
-                        <form id='regform' name='regform' method='post' class='form-horizontal'>
+                        <form id='regform' name='regform' action='/myshop/" . Trans::getDomain() . "/". Trans::_('register') . "' method='POST' class='form-horizontal'>
                             <fieldset>
                                 <legend>" . Trans::_('logininformation') . "</legend>
                                  <!-- Text input-->
@@ -146,6 +146,7 @@ class RegisterView
                                   <label class='col-md-4 control-label' for='title2'>" . Trans::_('title') . "</label>
                                   <div class='col-md-4'>
                                     <select id='title2' name='title2' class='form-control'>
+                                      <option value=''></option>
                                       <option value='" . Trans::_('mr') . "'>" . Trans::_('mr') . "</option>
                                       <option value='" . Trans::_('mrs') . "'>" . Trans::_('mrs') . "</option>
                                     </select>
@@ -215,7 +216,8 @@ class RegisterView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='register'></label>
                               <div class='col-md-4'>
-                                <button id='register' name='register' class='btn btn-default'>" . Trans::_('Register') . "</button>
+                                <input type='hidden' name='reggo' id='reggo' value='1' style='display: none;' />
+                                <button id='register' name='register' type='submit' class='btn btn-default'>" . Trans::_('Register') . "</button>
                               </div>
                             </div>
 
@@ -223,6 +225,11 @@ class RegisterView
                         </form>
 
                          <script>
+
+                         $.validator.addMethod('nospecialchars', function(value, element) {
+                                return this.optional(element) || /^[a-z A-Z 0-9 +._-]+$/i.test(value);
+                         }, 'No special Characters allowed.');
+
                          $('#regform').validate({
                            rules: {
                                 login: {
@@ -230,7 +237,8 @@ class RegisterView
                                   remote: {
                                         url: '/myshop/inc/logincheck.php',
                                         type: 'post',
-                                  }
+                                  },
+                                  nospecialchars: true,
                                 },
                                 password: 'required',
                                 password2: {
@@ -240,17 +248,49 @@ class RegisterView
                                   required: true,
                                   email: true
                                 },
+                                phone: 'nospecialchars',
                                 title: 'required',
-                                firstname: 'required',
-                                lastname: 'required',
-                                address: 'required',
-                                zip: 'required',
-                                location: 'required',
+                                firstname: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                lastname: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                address: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                zip: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                location: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                firstname2: {
+                                    nospecialchars: true,
+                                },
+                                lastname2: {
+                                    nospecialchars: true,
+                                },
+                                address2: {
+                                    nospecialchars: true,
+                                },
+                                zip2: {
+                                    nospecialchars: true,
+                                },
+                                location2: {
+                                    nospecialchars: true,
+                                },
                            },
                            messages: {
                                 login: {
                                     required: '" . Trans::_('required') . "',
                                     remote: '" . Trans::_('usertaken') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
                                 },
                                 password: '" . Trans::_('required') . "',
                                 password2: {
@@ -261,12 +301,47 @@ class RegisterView
                                     required: '" . Trans::_('required') . "',
                                     email: '" . Trans::_('validemail') . "',
                                 },
-                                title: '" . Trans::_('required') . "',
-                                firstname: '" . Trans::_('required') . "',
-                                lastname: '" . Trans::_('required') . "',
-                                address: '" . Trans::_('required') . "',
-                                zip: '" . Trans::_('required') . "',
-                                location: '" . Trans::_('required') . "',
+                                phone: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                title: {
+                                    required: '" . Trans::_('required') . "',
+                                },
+                                firstname: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                lastname: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                address: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                zip: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                location: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                firstname2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                lastname2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                address2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                zip2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                location2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
                            },
                          });
                          </script>
