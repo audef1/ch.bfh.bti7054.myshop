@@ -63,3 +63,8 @@
 'Login successful': 'Succès'
 'Order Complete': 'Commande terminée'
 'thxmessage': 'Merci pour votre commande. Nous n`avons pas l`intention de vous envoyer votre commande.'
+'usertaken': 'Login déja pris. Choisissez une autre login.'
+'required': 'Veuillez indiquez cette information.'
+'notequal': 'Les mots dés passe ne sont pas identique.'
+'validemail': 'Le courriel indiqué n`est pas valide.'
+'nospecialchars': 'Enlevez les charactères speciaux.'

@@ -33,7 +33,7 @@ class ContactView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='name'>" . Trans::_('name') . "</label>
                               <div class='col-md-4'>
-                              <input id='name' name='name' type='text' placeholder='' class='form-control input-md' required=''>
+                              <input id='name' name='name' type='text' placeholder='' class='form-control input-md' disabled>
 
                               </div>
                             </div>
@@ -42,7 +42,7 @@ class ContactView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='email'>" . Trans::_('email') . "</label>
                               <div class='col-md-4'>
-                              <input id='email' name='email' type='text' placeholder='' class='form-control input-md' required=''>
+                              <input id='email' name='email' type='text' placeholder='' class='form-control input-md' disabled>
 
                               </div>
                             </div>
@@ -51,7 +51,7 @@ class ContactView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='message'>" . Trans::_('message') . "</label>
                               <div class='col-md-4'>
-                                <textarea class='form-control' id='message' name='message' rows='4'></textarea>
+                                <textarea class='form-control' id='message' name='message' rows='4' disabled></textarea>
                               </div>
                             </div>
 
@@ -59,7 +59,7 @@ class ContactView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='submit'></label>
                               <div class='col-md-4'>
-                                <button id='submit' name='submit' class='btn btn-default'>" . Trans::_('submit') . "</button>
+                                <button id='submit' name='submit' type='submit' class='btn btn-default' disabled>" . Trans::_('submit') . "</button>
                               </div>
                             </div>
 

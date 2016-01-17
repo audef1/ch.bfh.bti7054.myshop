@@ -63,3 +63,8 @@
 'Login successful': 'Login successful'
 'Order Complete': 'Order completed'
 'thxmessage': 'Thanks for your order. We will never send you what you just ordered.'
+'usertaken': 'Username already taken. Please specify another username.'
+'required': 'Please fill out this field.'
+'notequal': 'The passwords entered are not equal.'
+'validemail': 'The email-address entered is not valid.'
+'nospecialchars': 'Only a handful of special characters are allowed.'

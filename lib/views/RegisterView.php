@@ -15,6 +15,8 @@ class RegisterView
 
     public function render()
     {
+        echo "<script type='text/javascript' src='/myshop/js/jquery.validate.min.js'></script>";
+
         echo "
             <div class='content'>
                 <div class='container'>
@@ -29,7 +31,7 @@ class RegisterView
                             <div class='clearfix'> </div>
                         </div>
 
-                        <form class='form-horizontal'>
+                        <form id='regform' name='regform' action='/myshop/" . Trans::getDomain() . "/". Trans::_('register') . "' method='POST' class='form-horizontal'>
                             <fieldset>
                                 <legend>" . Trans::_('logininformation') . "</legend>
                                  <!-- Text input-->
@@ -63,7 +65,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='title'>" . Trans::_('title') . "</label>
                                   <div class='col-md-4'>
-                                    <select id='title' name='title' class='form-control'>
+                                    <select id='title' name='title' class='form-control' required>
                                       <option value='" . Trans::_('mr') . "'>" . Trans::_('mr') . "</option>
                                       <option value='" . Trans::_('mrs') . "'>" . Trans::_('mrs') . "</option>
                                     </select>
@@ -74,7 +76,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='firstname'>" . Trans::_('firstname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='firstname' name='firstname' type='text' class='form-control input-md' required=''>
+                                  <input id='firstname' name='firstname' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -83,7 +85,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='lastname'>" . Trans::_('lastname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='lastname' name='lastname' type='text' class='form-control input-md' required=''>
+                                  <input id='lastname' name='lastname' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -92,7 +94,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='address'>" . Trans::_('address') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='address' name='address' type='text' class='form-control input-md'>
+                                  <input id='address' name='address' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -101,7 +103,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='zip'>" . Trans::_('zip') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='zip' name='zip' type='text' class='form-control input-md'>
+                                  <input id='zip' name='zip' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -110,7 +112,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='location'>" . Trans::_('location') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='location' name='location' type='text' class='form-control input-md'>
+                                  <input id='location' name='location' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -122,7 +124,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='email'>" . Trans::_('email') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='email' name='email' type='text' class='form-control input-md' required=''>
+                                  <input id='email' name='email' type='text' class='form-control input-md' required>
 
                                   </div>
                                 </div>
@@ -144,6 +146,7 @@ class RegisterView
                                   <label class='col-md-4 control-label' for='title2'>" . Trans::_('title') . "</label>
                                   <div class='col-md-4'>
                                     <select id='title2' name='title2' class='form-control'>
+                                      <option value=''></option>
                                       <option value='" . Trans::_('mr') . "'>" . Trans::_('mr') . "</option>
                                       <option value='" . Trans::_('mrs') . "'>" . Trans::_('mrs') . "</option>
                                     </select>
@@ -154,7 +157,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='firstname2'>" . Trans::_('firstname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='firstname2' name='firstname2' type='text' class='form-control input-md' required=''>
+                                  <input id='firstname2' name='firstname2' type='text' class='form-control input-md'>
 
                                   </div>
                                 </div>
@@ -163,7 +166,7 @@ class RegisterView
                                 <div class='form-group'>
                                   <label class='col-md-4 control-label' for='lastname2'>" . Trans::_('lastname') . "</label>
                                   <div class='col-md-5'>
-                                  <input id='lastname2' name='lastname2' type='text' class='form-control input-md' required=''>
+                                  <input id='lastname2' name='lastname2' type='text' class='form-control input-md'>
 
                                   </div>
                                 </div>
@@ -213,15 +216,139 @@ class RegisterView
                             <div class='form-group'>
                               <label class='col-md-4 control-label' for='register'></label>
                               <div class='col-md-4'>
-                                <button id='register' name='register' class='btn btn-default'>" . Trans::_('Register') . "</button>
+                                <input type='hidden' name='reggo' id='reggo' value='1' style='display: none;' />
+                                <button id='register' name='register' type='submit' class='btn btn-default'>" . Trans::_('Register') . "</button>
                               </div>
                             </div>
 
                             </fieldset>
                         </form>
+
+                         <script>
+
+                         $.validator.addMethod('nospecialchars', function(value, element) {
+                                return this.optional(element) || /^[a-z A-Z 0-9 ÖÄÜäöüéèà +._-]+$/i.test(value);
+                         }, 'No special Characters allowed.');
+
+                         $('#regform').validate({
+                           rules: {
+                                login: {
+                                  required: true,
+                                  remote: {
+                                        url: '/myshop/inc/logincheck.php',
+                                        type: 'post',
+                                  },
+                                  nospecialchars: true,
+                                },
+                                password: 'required',
+                                password2: {
+                                  equalTo: '#password'
+                                },
+                                email: {
+                                  required: true,
+                                  email: true
+                                },
+                                phone: 'nospecialchars',
+                                title: 'required',
+                                firstname: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                lastname: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                address: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                zip: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                location: {
+                                    required: true,
+                                    nospecialchars: true,
+                                },
+                                firstname2: {
+                                    nospecialchars: true,
+                                },
+                                lastname2: {
+                                    nospecialchars: true,
+                                },
+                                address2: {
+                                    nospecialchars: true,
+                                },
+                                zip2: {
+                                    nospecialchars: true,
+                                },
+                                location2: {
+                                    nospecialchars: true,
+                                },
+                           },
+                           messages: {
+                                login: {
+                                    required: '" . Trans::_('required') . "',
+                                    remote: '" . Trans::_('usertaken') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                password: '" . Trans::_('required') . "',
+                                password2: {
+                                    required: '" . Trans::_('required') . "',
+                                    equalTo: '" . Trans::_('notequal') . "',
+                                },
+                                email: {
+                                    required: '" . Trans::_('required') . "',
+                                    email: '" . Trans::_('validemail') . "',
+                                },
+                                phone: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                title: {
+                                    required: '" . Trans::_('required') . "',
+                                },
+                                firstname: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                lastname: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                address: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                zip: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                location: {
+                                    required: '" . Trans::_('required') . "',
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                firstname2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                lastname2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                address2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                zip2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                                location2: {
+                                    nospecialchars: '" . Trans::_('nospecialchars') . "',
+                                },
+                           },
+                         });
+                         </script>
                 </div>
             </div>
         ";
     }
 
 }
+
