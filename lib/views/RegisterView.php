@@ -227,7 +227,7 @@ class RegisterView
                          <script>
 
                          $.validator.addMethod('nospecialchars', function(value, element) {
-                                return this.optional(element) || /^[a-z A-Z 0-9 +._-]+$/i.test(value);
+                                return this.optional(element) || /^[a-z A-Z 0-9 äöüéèà +._-]+$/i.test(value);
                          }, 'No special Characters allowed.');
 
                          $('#regform').validate({
