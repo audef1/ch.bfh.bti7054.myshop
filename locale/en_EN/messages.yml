@@ -67,3 +67,4 @@
 'required': 'Please fill out this field.'
 'notequal': 'The passwords entered are not equal.'
 'validemail': 'The email-address entered is not valid.'
+'nospecialchars': 'Only a handful of special characters are allowed.'

@@ -67,3 +67,4 @@
 'required': 'Veuillez indiquez cette information.'
 'notequal': 'Les mots dés passe ne sont pas identique.'
 'validemail': 'Le courriel indiqué n`est pas valide.'
+'nospecialchars': 'Enlevez les charactères speciaux.'

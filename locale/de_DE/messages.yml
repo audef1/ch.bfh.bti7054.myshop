@@ -67,3 +67,4 @@
 'required': 'Bitte füllen Sie dieses Feld aus.'
 'notequal': 'Die eingegebenen Kennwörter sind nicht identisch.'
 'validemail': 'Die eingegebene E-Mail Adresse ist ungültig.'
+'nospecialchars': 'Es sind nur ausgewählte Sonderzeichen erlaubt.'
